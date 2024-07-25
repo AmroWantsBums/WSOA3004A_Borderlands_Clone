@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnLoot : MonoBehaviour
 {
-   
+    [SerializeField]
+    private EnemyType SwitchEnemy;
+    [SerializeField]
+    private bool SwitchTest;
+    
     public EnemyType regularEnemy;
     public EnemyType badAssEnemy;
 
@@ -174,7 +179,33 @@ public class SpawnLoot : MonoBehaviour
     // Update is called once per frame
         void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            KilledEnemy(SwitchEnemy);
+        }
+
+        if (SwitchTest == true)
+        {
+            SwitchEnemy = regularEnemy;
+        }
+        else
+        {
+            SwitchEnemy = badAssEnemy;
+        }
     }
-    
+
+    private void KilledEnemy(EnemyType typeKilled)
+    {
+        for (int i = 0; i  < typeKilled.itemPools.Count; i++)
+        {
+            float ranNum = UnityEngine.Random.Range(0, 100);
+
+            EnemyType.ItemPools checkDrop = typeKilled.itemPools[i];
+            
+            if (ranNum <= checkDrop.dropRate)
+            {
+                Debug.Log(checkDrop.selectPool + " "+ ranNum);
+            }
+        }
+    }
 }
