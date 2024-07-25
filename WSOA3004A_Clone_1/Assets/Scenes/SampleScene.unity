@@ -244,6 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d066de4b05c1a64badf6d83d50a2ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwitchEnemy:
+    itemPools: []
+    selectEnemyType_SL: 0
+  SwitchTest: 0
   regularEnemy:
     itemPools:
     - dropRate: 0
@@ -287,6 +291,10 @@ MonoBehaviour:
   dropOdd_AmmoRan: 25
   dropOdd_AmmoEmergency: 20
   dropOdd_AmmoAlways: 100
+  gunsAndGearDef:
+    poolsGunsAndGear:
+    - Weight: 0
+      selectGunsAndGear: 0
 --- !u!4 &2059454366
 Transform:
   m_ObjectHideFlags: 0
