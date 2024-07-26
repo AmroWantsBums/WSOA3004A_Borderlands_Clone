@@ -18,10 +18,21 @@ public class SpawnLoot : MonoBehaviour
     [SerializeField]
     private float dropOdd_GunsAndGear, dropOdd_Skin, dropOdd_Money, dropOdd_EridiumStick, dropOdd_Eriumbar, dropOdd_HealthRan, dropOdd_HealthAlways, dropOdd_HealthEmergency, dropOdd_AmmoRan, dropOdd_AmmoEmergency, dropOdd_AmmoAlways;
 
-    [Header("Weights")]
+    [Header("Weights for Guns and Gear")]
     [SerializeField]
     private float Weight_Common, Weight_Uncommon, Adjust_Weight_Common, Adjust_Weight_Uncommon_1, Adjust_Weight_UnCommon_2;
-  
+
+    [Header("Weights for Rarity")]
+    [SerializeField]
+    private float Common, Uncommon, AdjustToRare, AdjustToVeryRare, AdjustToLegendary;
+
+    [Header("Weights for Type")]
+    [SerializeField]
+    private float Pistol, Group, Sniper, Launcher;
+
+    [Header("weights for Manufacture")]
+    [SerializeField]
+    private float StandardWeight;
 
     [SerializeField]
     [System.Serializable]
@@ -31,7 +42,13 @@ public class SpawnLoot : MonoBehaviour
  
         public List<ItemPools> itemPools;
         public List<PoolGunsAndGear> poolGunsAdGear;
+        public List<RarityPool> rarityPools;
+        public List<WeaponTypePool> weaponTypePools;
+        public List<ManufactoresPool> manufactoresPools;
 
+        public RarityPool.AvailableRarities produceRarity;
+        public WeaponTypePool.WeaponType produceWeaponType;
+        public ManufactoresPool.AllManufacterus produceManufacture;
 
         public enum enemies
         {
@@ -87,8 +104,57 @@ public class SpawnLoot : MonoBehaviour
             }
         }    
        
+        [System.Serializable]
+        public struct RarityPool
+        {
+            public float Weight;
+            public AvailableRarities selectRarities;
+
+            public enum AvailableRarities
+            {
+                Common,
+                Uncommon,
+                Rare,
+                VeryRare,
+                Legendary
+            }
+        }
        
+        [System.Serializable]
+        public struct WeaponTypePool
+        {
+            public float Weight;
+            public WeaponType selectWeaponType;
+
+            public enum WeaponType
+            {
+                Pistol,
+                AssualtRifle,
+                SMG,
+                ShotGun,
+                Sniper,
+                Luancher
+            }
+        }
         
+        [System.Serializable]
+        public struct ManufactoresPool
+        {
+            public float Weight;
+            public AllManufacterus selectManufacturer;
+
+            public enum AllManufacterus
+            {
+               Bandit,
+               Tediore,
+               Dahl,
+               Vladoff,
+               Torgue,
+               Maliwan,
+               Jacobs,
+               Hyperion
+            }
+        }
     }
 
     
@@ -103,104 +169,12 @@ public class SpawnLoot : MonoBehaviour
         
         
     }
+    
 
-   //Modifies BaseDrops for badAssEnemy
-    private void SetBadassStats()
-    {
-        for (int i = 0; i < badAssEnemy.itemPools.Count; i++)
-        {
-            EnemyType.ItemPools modifyPool = regularEnemy.itemPools[i];
-
-            switch (modifyPool.selectPool)
-            {
-                case EnemyType.ItemPools.AvailablePools.GunsAndGear:
-                    modifyPool.dropRate = dropOdd_GunsAndGear * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.Skin:
-                    modifyPool.dropRate = dropOdd_Skin * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.Money:
-                    modifyPool.dropRate = dropOdd_Money * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.EridiumStick:
-                    modifyPool.dropRate = dropOdd_EridiumStick * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.EridiumBar:
-                    modifyPool.dropRate = dropOdd_Eriumbar * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.HealthRan:
-                    modifyPool.dropRate = dropOdd_HealthRan;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.HealthAlways:
-                    modifyPool.dropRate = dropOdd_HealthAlways * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.HealthEmergency:
-                    modifyPool.dropRate = dropOdd_HealthEmergency * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.AmmoRan:
-                    modifyPool.dropRate = dropOdd_AmmoRan;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.AmmoEmergency:
-                    modifyPool.dropRate = dropOdd_AmmoEmergency * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-                case EnemyType.ItemPools.AvailablePools.AmmoAlways:
-                    modifyPool.dropRate = dropOdd_AmmoAlways * 1.5f;
-                    badAssEnemy.itemPools[i] = modifyPool;
-                    break;
-            }
-
-        }
-
-        for (int i = 0; i < badAssEnemy.poolGunsAdGear.Count; i++)
-        {
-            EnemyType.PoolGunsAndGear modifyPool = badAssEnemy.poolGunsAdGear[i];
-
-            switch (modifyPool.selectGunsAndGear)
-            {
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_All:
-                    modifyPool.Weight = Weight_Common;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_UncommonUp:
-                    modifyPool.Weight = Weight_Common * Adjust_Weight_Common;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_RareUp:
-                    modifyPool.Weight = Weight_Uncommon * Adjust_Weight_Uncommon_1;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_VeryRareUp:
-                    modifyPool.Weight = Weight_Uncommon * Adjust_Weight_UnCommon_2;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_Legendary:
-                    modifyPool.Weight = Weight_Uncommon;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Shields:
-                    modifyPool.Weight = Weight_Common * Adjust_Weight_Common;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Relics:
-                    modifyPool.Weight = Weight_Uncommon;
-                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
-                    break;
-            }
-        }
-    }
-
+    //Assigns the base value of global values to RegularEnemy
     private void SetRegularEnemyStats()
     {
+        //Sets Stats ItemPools
         for (int i = 0; i < regularEnemy.itemPools.Count; i++)
         {
             EnemyType.ItemPools modifyPool = regularEnemy.itemPools[i];
@@ -255,6 +229,7 @@ public class SpawnLoot : MonoBehaviour
 
         }
 
+        //Sets Stats for GunsAndGearPool
         for (int i = 0; i < regularEnemy.poolGunsAdGear.Count; i++)
         {
             EnemyType.PoolGunsAndGear modifyPool = regularEnemy.poolGunsAdGear[i];
@@ -291,7 +266,172 @@ public class SpawnLoot : MonoBehaviour
                     break;
             }
         }
+
+        //Sets Stats for RarityPool
+        for (int i = 0; i < regularEnemy.rarityPools.Count; i++)
+        {
+            EnemyType.RarityPool modifyPool = regularEnemy.rarityPools[i];
+
+            switch (modifyPool.selectRarities)
+            {
+                case EnemyType.RarityPool.AvailableRarities.Common:
+                    modifyPool.Weight = Common;
+                    break;
+                case EnemyType.RarityPool.AvailableRarities.Uncommon:
+                    modifyPool.Weight = Uncommon / AdjustToRare;
+                    break;
+                case EnemyType.RarityPool.AvailableRarities.Rare:
+                    modifyPool.Weight = Uncommon / AdjustToVeryRare;
+                    break;
+                case EnemyType.RarityPool.AvailableRarities.VeryRare:
+                    modifyPool.Weight = Uncommon / AdjustToVeryRare;
+                    break;
+                case EnemyType.RarityPool.AvailableRarities.Legendary:
+                    modifyPool.Weight = Uncommon / AdjustToLegendary;
+                    break;
+            }
+
+            regularEnemy.rarityPools[i] = modifyPool;
+           
+        }
+
+        //Sets stats for weaponTypePool
+        for (int i = 0; i < regularEnemy.weaponTypePools.Count; i++)
+        {
+            EnemyType.WeaponTypePool modifyPool = regularEnemy.weaponTypePools[i];
+
+            switch (modifyPool.selectWeaponType)
+            {
+                case EnemyType.WeaponTypePool.WeaponType.Pistol:
+                    modifyPool.Weight = Pistol;
+                    break;
+                case EnemyType.WeaponTypePool.WeaponType.AssualtRifle:
+                    modifyPool.Weight = Group;
+                    break;
+                case EnemyType.WeaponTypePool.WeaponType.SMG:
+                    modifyPool.Weight = Group;
+                    break;
+                case EnemyType.WeaponTypePool.WeaponType.ShotGun:
+                    modifyPool.Weight = Group;
+                    break;
+                case EnemyType.WeaponTypePool.WeaponType.Sniper:
+                    modifyPool.Weight = Sniper;
+                    break;
+                case EnemyType.WeaponTypePool.WeaponType.Luancher:
+                    modifyPool.Weight = Launcher;
+                    break;
+            }
+
+            regularEnemy.weaponTypePools[i] = modifyPool;
+        }
+            //Sets Stats for ManufacturesPool
+            for (int i = 0; i < regularEnemy.manufactoresPools.Count; i++)
+        {
+            EnemyType.ManufactoresPool modifyPool = regularEnemy.manufactoresPools[i];
+            modifyPool.Weight = StandardWeight;
+            regularEnemy.manufactoresPools[i] = modifyPool;
+        }
+
     }
+
+        //Modifies BaseDrops for badAssEnemy
+        private void SetBadassStats()
+    {
+        //Sets Stats ItemPools
+        for (int i = 0; i < badAssEnemy.itemPools.Count; i++)
+        {
+            EnemyType.ItemPools modifyPool = regularEnemy.itemPools[i];
+
+            switch (modifyPool.selectPool)
+            {
+                case EnemyType.ItemPools.AvailablePools.GunsAndGear:
+                    modifyPool.dropRate = dropOdd_GunsAndGear * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.Skin:
+                    modifyPool.dropRate = dropOdd_Skin * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.Money:
+                    modifyPool.dropRate = dropOdd_Money * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.EridiumStick:
+                    modifyPool.dropRate = dropOdd_EridiumStick * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.EridiumBar:
+                    modifyPool.dropRate = dropOdd_Eriumbar * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.HealthRan:
+                    modifyPool.dropRate = dropOdd_HealthRan;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.HealthAlways:
+                    modifyPool.dropRate = dropOdd_HealthAlways * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.HealthEmergency:
+                    modifyPool.dropRate = dropOdd_HealthEmergency * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.AmmoRan:
+                    modifyPool.dropRate = dropOdd_AmmoRan;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.AmmoEmergency:
+                    modifyPool.dropRate = dropOdd_AmmoEmergency * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+                case EnemyType.ItemPools.AvailablePools.AmmoAlways:
+                    modifyPool.dropRate = dropOdd_AmmoAlways * 1.5f;
+                    badAssEnemy.itemPools[i] = modifyPool;
+                    break;
+            }
+
+        }
+
+        //Sets Stats for GunsAndGearPool
+        for (int i = 0; i < badAssEnemy.poolGunsAdGear.Count; i++)
+        {
+            EnemyType.PoolGunsAndGear modifyPool = badAssEnemy.poolGunsAdGear[i];
+
+            switch (modifyPool.selectGunsAndGear)
+            {
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_All:
+                    modifyPool.Weight = Weight_Common;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_UncommonUp:
+                    modifyPool.Weight = Weight_Common * Adjust_Weight_Common;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_RareUp:
+                    modifyPool.Weight = Weight_Uncommon * Adjust_Weight_Uncommon_1;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_VeryRareUp:
+                    modifyPool.Weight = Weight_Uncommon * Adjust_Weight_UnCommon_2;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_Legendary:
+                    modifyPool.Weight = Weight_Uncommon;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Shields:
+                    modifyPool.Weight = Weight_Common * Adjust_Weight_Common;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+                case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Relics:
+                    modifyPool.Weight = Weight_Uncommon;
+                    badAssEnemy.poolGunsAdGear[i] = modifyPool;
+                    break;
+            }
+        }
+    }
+
+    
         
 
         // Update is called once per frame
@@ -325,7 +465,7 @@ public class SpawnLoot : MonoBehaviour
                 switch (checkDrop.selectPool)
                 {
                     case EnemyType.ItemPools.AvailablePools.GunsAndGear:
-                        Debug.Log(checkDrop.selectPool);
+                        //Debug.Log(checkDrop.selectPool);
                         DetermineGunsAndGear(typeKilled);
                         break;
                     case EnemyType.ItemPools.AvailablePools.Skin:
@@ -385,7 +525,7 @@ public class SpawnLoot : MonoBehaviour
                 switch (checkWeight.selectGunsAndGear)
                 {
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_All:
-                        Debug.Log(checkWeight.selectGunsAndGear);
+                       // Debug.Log(checkWeight.selectGunsAndGear);
                         DetermineRarityOfWeapon(Killed);
                         break;
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_UncommonUp:
@@ -411,6 +551,148 @@ public class SpawnLoot : MonoBehaviour
 
     private void DetermineRarityOfWeapon(EnemyType killed)
     {
-       
+        float maxValue = 0;
+        for (int i = 0; i < killed.rarityPools.Count; i++)
+        {
+            EnemyType.RarityPool checkWeight = killed.rarityPools[i];
+            maxValue = maxValue + checkWeight.Weight;
+        }
+        
+        float ranNum = UnityEngine.Random.Range(0, maxValue);
+        
+        float TotalTicketsInbowl = 0;
+        for (int i = 0; i < killed.rarityPools.Count; i++)
+        {
+            EnemyType.RarityPool checkWeight = killed.rarityPools[i];
+            TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
+
+            if (ranNum <= TotalTicketsInbowl)
+            {
+                switch (checkWeight.selectRarities)
+                {
+                    case EnemyType.RarityPool.AvailableRarities.Common:
+                        killed.produceRarity = EnemyType.RarityPool.AvailableRarities.Common;
+                        break;
+                    case EnemyType.RarityPool.AvailableRarities.Uncommon:
+                        killed.produceRarity = EnemyType.RarityPool.AvailableRarities.Uncommon;
+                        break;
+                    case EnemyType.RarityPool.AvailableRarities.Rare:
+                        killed.produceRarity = EnemyType.RarityPool.AvailableRarities.Rare;
+                        break;
+                    case EnemyType.RarityPool.AvailableRarities.VeryRare:
+                        killed.produceRarity = EnemyType.RarityPool.AvailableRarities.VeryRare;
+                        break;
+                    case EnemyType.RarityPool.AvailableRarities.Legendary:
+                        killed.produceRarity = EnemyType.RarityPool.AvailableRarities.Legendary;
+                        break;
+                }
+
+               // Debug.Log(killed.produceRarity);
+                DetermineWeaponType(killed);
+                return;
+            }
+        }
+        
+    }
+
+    private void DetermineWeaponType(EnemyType killed)
+    {
+        float maxValue = 0;
+        for (int i = 0; i < killed.weaponTypePools.Count; i++)
+        {
+            EnemyType.WeaponTypePool checkWeight = killed.weaponTypePools[i];
+            maxValue = maxValue + checkWeight.Weight;
+        }
+
+        float ranNum = UnityEngine.Random.Range(0, maxValue);
+        
+        float TotalTicketsInbowl = 0;
+        for (int i = 0; i < killed.weaponTypePools.Count; i++)
+        {
+            EnemyType.WeaponTypePool checkWeight = killed.weaponTypePools[i];
+            TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
+
+            if (ranNum <= TotalTicketsInbowl)
+            {
+                switch (checkWeight.selectWeaponType)
+                {
+                    case EnemyType.WeaponTypePool.WeaponType.Pistol:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.Pistol;
+                        break;
+                    case EnemyType.WeaponTypePool.WeaponType.AssualtRifle:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.AssualtRifle;
+                        break;
+                    case EnemyType.WeaponTypePool.WeaponType.SMG:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.SMG;
+                        break;
+                    case EnemyType.WeaponTypePool.WeaponType.ShotGun:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.ShotGun;
+                        break;
+                    case EnemyType.WeaponTypePool.WeaponType.Sniper:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.Sniper;
+                        break;
+                    case EnemyType.WeaponTypePool.WeaponType.Luancher:
+                        killed.produceWeaponType = EnemyType.WeaponTypePool.WeaponType.Luancher;
+                        break;
+                }
+
+                // Debug.Log(killed.produceRarity);
+                DetermineManufacturer(killed);
+                return;
+            }
+        }
+    }
+
+    private void DetermineManufacturer(EnemyType killed)
+    {
+        float maxValue = 0;
+        for (int i = 0; i < killed.manufactoresPools.Count; i++)
+        {
+            EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
+            maxValue = maxValue + checkWeight.Weight;
+        }
+
+        float ranNum = UnityEngine.Random.Range(0, maxValue);
+        
+        float TotalTicketsInbowl = 0;
+        for (int i = 0; i < killed.manufactoresPools.Count; i++)
+        {
+            EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
+            TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
+
+            if (ranNum <= TotalTicketsInbowl)
+            {
+                switch (checkWeight.selectManufacturer)
+                {
+                    case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                        break;
+                    case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                        break;
+                }
+
+                Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                return;
+            }
+        }
     }
 }

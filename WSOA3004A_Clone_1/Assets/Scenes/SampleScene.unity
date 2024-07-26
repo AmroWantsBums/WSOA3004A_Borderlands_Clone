@@ -245,10 +245,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwitchEnemy:
-    itemPools: []
     selectEnemyType_SL: 0
-  SwitchTest: 0
+    itemPools: []
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
+  SwitchTest: 1
   regularEnemy:
+    selectEnemyType_SL: 0
     itemPools:
     - dropRate: 0
       selectPool: 0
@@ -266,8 +274,59 @@ MonoBehaviour:
       selectPool: 8
     - dropRate: 0
       selectPool: 9
-    selectEnemyType_SL: 0
+    poolGunsAdGear:
+    - Weight: 0
+      selectGunsAndGear: 0
+    - Weight: 0
+      selectGunsAndGear: 5
+    - Weight: 0
+      selectGunsAndGear: 6
+    rarityPools:
+    - Weight: 0
+      selectRarities: 0
+    - Weight: 0
+      selectRarities: 1
+    - Weight: 0
+      selectRarities: 2
+    - Weight: 0
+      selectRarities: 3
+    - Weight: 0
+      selectRarities: 4
+    weaponTypePools:
+    - Weight: 0
+      selectWeaponType: 0
+    - Weight: 0
+      selectWeaponType: 1
+    - Weight: 0
+      selectWeaponType: 2
+    - Weight: 0
+      selectWeaponType: 3
+    - Weight: 0
+      selectWeaponType: 4
+    - Weight: 0
+      selectWeaponType: 5
+    manufactoresPools:
+    - Weight: 0
+      selectManufacturer: 0
+    - Weight: 0
+      selectManufacturer: 1
+    - Weight: 0
+      selectManufacturer: 2
+    - Weight: 0
+      selectManufacturer: 3
+    - Weight: 0
+      selectManufacturer: 4
+    - Weight: 0
+      selectManufacturer: 5
+    - Weight: 0
+      selectManufacturer: 6
+    - Weight: 0
+      selectManufacturer: 7
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
   badAssEnemy:
+    selectEnemyType_SL: 1
     itemPools:
     - dropRate: 0
       selectPool: 0
@@ -279,22 +338,39 @@ MonoBehaviour:
       selectPool: 7
     - dropRate: 0
       selectPool: 8
-    selectEnemyType_SL: 1
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
   dropOdd_GunsAndGear: 8.5
   dropOdd_Skin: 4
-  dropOdd_Money: 46
+  dropOdd_Money: 30
   dropOdd_EridiumStick: 6
   dropOdd_Eriumbar: 2
-  dropOdd_HealthRan: 30
-  dropOdd_HealthAlways: 100
-  dropOdd_HealthEmergency: 10
-  dropOdd_AmmoRan: 25
-  dropOdd_AmmoEmergency: 20
-  dropOdd_AmmoAlways: 100
-  gunsAndGearDef:
-    poolsGunsAndGear:
-    - Weight: 0
-      selectGunsAndGear: 0
+  dropOdd_HealthRan: 18
+  dropOdd_HealthAlways: -1
+  dropOdd_HealthEmergency: -1
+  dropOdd_AmmoRan: 12
+  dropOdd_AmmoEmergency: -1
+  dropOdd_AmmoAlways: -11
+  Weight_Common: 100
+  Weight_Uncommon: 10
+  Adjust_Weight_Common: 0.45
+  Adjust_Weight_Uncommon_1: 3
+  Adjust_Weight_UnCommon_2: 2.2
+  Common: 900
+  Uncommon: 100
+  AdjustToRare: 10
+  AdjustToVeryRare: 100
+  AdjustToLegendary: 1000
+  Pistol: 100
+  Group: 80
+  Sniper: 55
+  Launcher: 20
+  StandardWeight: 12.5
 --- !u!4 &2059454366
 Transform:
   m_ObjectHideFlags: 0
