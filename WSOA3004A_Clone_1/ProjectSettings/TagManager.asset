@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Incendiary_Enemy
+  - Explosive_Enemy
+  - Slag_Enemy
+  - Explosive_Bullet
+  - Incendiary_Bullet
+  - Slag_Bullet
+  - Explosive_Weapon
+  - Incendiary_Weapon
+  - Slag_Weapon
   layers:
   - Default
   - TransparentFX
