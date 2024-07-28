@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
 {
-    //Incendiary, Corrosive, Explosive
+    //Incendiary, Slag, Explosive
     public GameObject[] enemyTypes;
-    public Transform spawnPosition;
+    public Transform[] spawnPositions;
+    private int numberOfEnemies;
     // Start is called before the first frame update
     void Start()
     {
-        
+        numberOfEnemies = 1;
+        spawnEnemy(numberOfEnemies);
     }
 
     // Update is called once per frame
@@ -19,9 +21,21 @@ public class enemySpawner : MonoBehaviour
         
     }
 
-    void spawnEnemy()
+    void spawnEnemy(int numberOfEnemiesToSpawn)
     {
-        int randomNumber = Random.Range(1, 3);
-        Instantiate(enemyTypes[randomNumber], spawnPosition.position, Quaternion.identity);
+        for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        {
+            int randomNumber = Random.Range(0, 3);
+            int spawnPosition = Random.Range(0, 4);
+            //Debug.Log("Enemy type " + randomNumber  + " at position " + spawnPosition);
+            Instantiate(enemyTypes[randomNumber], spawnPositions[spawnPosition].position, Quaternion.identity);
+        }
+        StartCoroutine(spawnCooldown());
+    }
+
+    IEnumerator spawnCooldown()
+    {
+        yield return new WaitForSeconds(6f);
+        spawnEnemy(numberOfEnemies);
     }
 }
