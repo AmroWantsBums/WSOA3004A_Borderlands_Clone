@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bulletController : MonoBehaviour
 {
+    public GameObject sparkParticleEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,10 @@ public class bulletController : MonoBehaviour
         if (gameObject.CompareTag("Explosive_Bullet"))
         {
             if (col.gameObject.CompareTag("Explosive_Enemy"))
-            {
+            {   
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(100);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
             else
@@ -31,6 +33,7 @@ public class bulletController : MonoBehaviour
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(30);
                 Destroy(gameObject);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
         }
 
@@ -41,12 +44,14 @@ public class bulletController : MonoBehaviour
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(100);
                 Destroy(gameObject);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
             else
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(30);
                 Destroy(gameObject);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
         }
 
@@ -57,12 +62,14 @@ public class bulletController : MonoBehaviour
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(100);
                 Destroy(gameObject);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
             else
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(30);
                 Destroy(gameObject);
+                Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
         }
     }
