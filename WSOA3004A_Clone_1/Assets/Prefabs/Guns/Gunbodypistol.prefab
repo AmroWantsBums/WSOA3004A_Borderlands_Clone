@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271788931099840601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.503, y: 0, z: 0}
+  m_LocalPosition: {x: 0.502, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 8132802650661726878}
   - component: {fileID: 4632797515432966945}
   - component: {fileID: 3011732357126049830}
+  - component: {fileID: 6725374713678802602}
   m_Layer: 0
   m_Name: Gunbodypistol
   m_TagString: Untagged
@@ -265,3 +266,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6725374713678802602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8713152008952312245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad6931c712711f49af81981036306a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrelSocket: {fileID: 3448508417105224711}
+  scopeSocket: {fileID: 5080347315134851183}
+  handleSocket: {fileID: 2634393949356409330}
+  magazineSocket: {fileID: 1803733913482908454}
+  stockSocket: {fileID: 8264973036979967208}

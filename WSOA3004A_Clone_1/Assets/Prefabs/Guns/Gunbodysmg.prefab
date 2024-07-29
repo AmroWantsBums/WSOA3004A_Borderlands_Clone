@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5782421610722845673}
   - component: {fileID: 197271128127961196}
   - component: {fileID: 8616916161960020924}
+  - component: {fileID: 8682332106281987643}
   m_Layer: 0
   m_Name: Gunbodysmg
   m_TagString: Untagged
@@ -203,6 +204,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8682332106281987643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303909578280692535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad6931c712711f49af81981036306a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrelSocket: {fileID: 2333138756244778162}
+  scopeSocket: {fileID: 4568654706079634136}
+  handleSocket: {fileID: 1036188777232622892}
+  magazineSocket: {fileID: 8940693903119476537}
+  stockSocket: {fileID: 4945644261104071867}
 --- !u!1 &1934783965096248721
 GameObject:
   m_ObjectHideFlags: 0
