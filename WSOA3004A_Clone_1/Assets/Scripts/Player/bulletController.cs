@@ -45,6 +45,7 @@ public class bulletController : MonoBehaviour
                 enemyHealth.takeDamage(100);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
+                enemyHealth.enemyVulnerable = true;
             }
             else
             {
@@ -52,6 +53,7 @@ public class bulletController : MonoBehaviour
                 enemyHealth.takeDamage(30);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
+                enemyHealth.enemyVulnerable = true;
             }
         }
 
