@@ -371,6 +371,78 @@ MonoBehaviour:
   Sniper: 55
   Launcher: 20
   StandardWeight: 12.5
+  PistolBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
+  ARBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
+  SMGBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 2
+  ShotGunBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 4
+  SniperBrands:
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 3
+  LuancherBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
 --- !u!4 &2059454366
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,12 @@ public class SpawnLoot : MonoBehaviour
     [SerializeField]
     private float StandardWeight;
 
+    [Header("Who makes What")]
+    [SerializeField]
+    private List<EnemyType.ManufactoresPool> PistolBrands, ARBrands, SMGBrands, ShotGunBrands, SniperBrands, LuancherBrands;
+    
+
+
     [SerializeField]
     [System.Serializable]
     public struct EnemyType
@@ -324,17 +330,28 @@ public class SpawnLoot : MonoBehaviour
 
             regularEnemy.weaponTypePools[i] = modifyPool;
         }
-            //Sets Stats for ManufacturesPool
-            for (int i = 0; i < regularEnemy.manufactoresPools.Count; i++)
-        {
-            EnemyType.ManufactoresPool modifyPool = regularEnemy.manufactoresPools[i];
-            modifyPool.Weight = StandardWeight;
-            regularEnemy.manufactoresPools[i] = modifyPool;
-        }
-
+        //Sets Stats for ManufacturesPool
+        SetWeightsFormanufacturers(PistolBrands);
+        SetWeightsFormanufacturers(SMGBrands);
+        SetWeightsFormanufacturers(ARBrands);
+        SetWeightsFormanufacturers(ShotGunBrands);
+        SetWeightsFormanufacturers(SniperBrands);
+        SetWeightsFormanufacturers(LuancherBrands);
     }
 
-        //Modifies BaseDrops for badAssEnemy
+       private void SetWeightsFormanufacturers(List<EnemyType.ManufactoresPool> manufactoresPools)
+    {
+        for (int i = 0; i < manufactoresPools.Count; i++)
+        {
+            EnemyType.ManufactoresPool modifyPool = manufactoresPools[i];
+            modifyPool.Weight = StandardWeight;
+            manufactoresPools[i] = modifyPool;
+        }
+    }
+    
+    
+    
+    //Modifies BaseDrops for badAssEnemy
         private void SetBadassStats()
     {
         //Sets Stats ItemPools
@@ -465,7 +482,7 @@ public class SpawnLoot : MonoBehaviour
                 switch (checkDrop.selectPool)
                 {
                     case EnemyType.ItemPools.AvailablePools.GunsAndGear:
-                        //Debug.Log(checkDrop.selectPool);
+                        Debug.Log(checkDrop.selectPool);
                         DetermineGunsAndGear(typeKilled);
                         break;
                     case EnemyType.ItemPools.AvailablePools.Skin:
@@ -525,7 +542,7 @@ public class SpawnLoot : MonoBehaviour
                 switch (checkWeight.selectGunsAndGear)
                 {
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_All:
-                       // Debug.Log(checkWeight.selectGunsAndGear);
+                       Debug.Log(checkWeight.selectGunsAndGear);
                         DetermineRarityOfWeapon(Killed);
                         break;
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_UncommonUp:
@@ -587,7 +604,7 @@ public class SpawnLoot : MonoBehaviour
                         break;
                 }
 
-               // Debug.Log(killed.produceRarity);
+                Debug.Log(killed.produceRarity);
                 DetermineWeaponType(killed);
                 return;
             }
@@ -636,7 +653,7 @@ public class SpawnLoot : MonoBehaviour
                         break;
                 }
 
-                // Debug.Log(killed.produceRarity);
+                 Debug.Log(killed.produceWeaponType);
                 DetermineManufacturer(killed);
                 return;
             }
@@ -645,54 +662,371 @@ public class SpawnLoot : MonoBehaviour
 
     private void DetermineManufacturer(EnemyType killed)
     {
-        float maxValue = 0;
-        for (int i = 0; i < killed.manufactoresPools.Count; i++)
+        switch (killed.produceWeaponType)
         {
-            EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
-            maxValue = maxValue + checkWeight.Weight;
-        }
-
-        float ranNum = UnityEngine.Random.Range(0, maxValue);
-        
-        float TotalTicketsInbowl = 0;
-        for (int i = 0; i < killed.manufactoresPools.Count; i++)
-        {
-            EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
-            TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
-
-            if (ranNum <= TotalTicketsInbowl)
-            {
-                switch (checkWeight.selectManufacturer)
+            case EnemyType.WeaponTypePool.WeaponType.Pistol:
+              
+                float maxValue = 0;
+                for (int i = 0; i < PistolBrands.Count; i++)
                 {
-                    case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
-                        break;
-                    case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
-                        killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
-                        break;
+                    EnemyType.ManufactoresPool checkWeight = PistolBrands[i];
+                    maxValue = maxValue + checkWeight.Weight;
                 }
 
-                Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
-                return;
-            }
+                float ranNum = UnityEngine.Random.Range(0, maxValue);
+
+                float TotalTicketsInbowl = 0;
+                for (int i = 0; i < PistolBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = PistolBrands[i];
+                    TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
+
+                    if (ranNum <= TotalTicketsInbowl)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                       Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+                break;
+            case EnemyType.WeaponTypePool.WeaponType.AssualtRifle:
+
+                float maxValueAR = 0;
+                for (int i = 0; i < ARBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = ARBrands[i];
+                    maxValue = maxValueAR + checkWeight.Weight;
+                }
+
+                float ranNumAR = UnityEngine.Random.Range(0, maxValueAR);
+
+                float TotalTicketsInbowlAR = 0;
+                for (int i = 0; i < ARBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = ARBrands[i];
+                    TotalTicketsInbowlAR = TotalTicketsInbowlAR + checkWeight.Weight;
+
+                    if (ranNumAR <= TotalTicketsInbowlAR)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+                 break;
+            case EnemyType.WeaponTypePool.WeaponType.SMG:
+                float maxValueSMG = 0;
+                for (int i = 0; i < SMGBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = SMGBrands[i];
+                    maxValue = maxValueSMG + checkWeight.Weight;
+                }
+
+                float ranNumSMG = UnityEngine.Random.Range(0, maxValueSMG);
+
+                float TotalTicketsInbowlSMG = 0;
+                for (int i = 0; i < SMGBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = SMGBrands[i];
+                    TotalTicketsInbowlSMG = TotalTicketsInbowlSMG + checkWeight.Weight;
+
+                    if (ranNumSMG <= TotalTicketsInbowlSMG)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+
+                break;
+            case EnemyType.WeaponTypePool.WeaponType.ShotGun:
+                float maxValueSG = 0;
+                for (int i = 0; i < ShotGunBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = ShotGunBrands[i];
+                    maxValue = maxValueSG + checkWeight.Weight;
+                }
+
+                float ranNumSG = UnityEngine.Random.Range(0, maxValueSG);
+
+                float TotalTicketsInbowlSG = 0;
+                for (int i = 0; i < ShotGunBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = ShotGunBrands[i];
+                    TotalTicketsInbowlSG = TotalTicketsInbowlSG + checkWeight.Weight;
+
+                    if (ranNumSG <= TotalTicketsInbowlSG)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                       Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+                break;
+            case EnemyType.WeaponTypePool.WeaponType.Sniper:
+                float maxValueSR = 0;
+                for (int i = 0; i < SniperBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = SniperBrands[i];
+                    maxValue = maxValueSR + checkWeight.Weight;
+                }
+
+                float ranNumSR = UnityEngine.Random.Range(0, maxValueSR);
+
+                float TotalTicketsInbowlSR = 0;
+                for (int i = 0; i < SniperBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = SniperBrands[i];
+                    TotalTicketsInbowlSR = TotalTicketsInbowlSR + checkWeight.Weight;
+
+                    if (ranNumSR <= TotalTicketsInbowlSR)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+                break;
+            case EnemyType.WeaponTypePool.WeaponType.Luancher:
+                float maxValueL = 0;
+                for (int i = 0; i < LuancherBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = LuancherBrands[i];
+                    maxValue = maxValueL + checkWeight.Weight;
+                }
+
+                float ranNumL = UnityEngine.Random.Range(0, maxValueL);
+
+                float TotalTicketsInbowlL = 0;
+                for (int i = 0; i < LuancherBrands.Count; i++)
+                {
+                    EnemyType.ManufactoresPool checkWeight = LuancherBrands[i];
+                    TotalTicketsInbowlL = TotalTicketsInbowlL + checkWeight.Weight;
+
+                    if (ranNumL <= TotalTicketsInbowlL)
+                    {
+                        switch (checkWeight.selectManufacturer)
+                        {
+                            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+                                break;
+                            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+                                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+                                break;
+                        }
+
+                       Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        return;
+                    }
+                }
+                break;
+
+                
         }
+
+       
+
+        //float maxValue = 0;
+        //for (int i = 0; i < killed.manufactoresPools.Count; i++)
+        //{
+        //    EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
+        //    maxValue = maxValue + checkWeight.Weight;
+        //}
+
+        //float ranNum = UnityEngine.Random.Range(0, maxValue);
+
+        //float TotalTicketsInbowl = 0;
+        //for (int i = 0; i < killed.manufactoresPools.Count; i++)
+        //{
+        //    EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
+        //    TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
+
+        //    if (ranNum <= TotalTicketsInbowl)
+        //    {
+        //        switch (checkWeight.selectManufacturer)
+        //        {
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
+        //                break;
+        //            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
+        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
+        //                break;
+        //        }
+
+        //        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+        //        return;
+        //    }
+        //}
     }
 }
