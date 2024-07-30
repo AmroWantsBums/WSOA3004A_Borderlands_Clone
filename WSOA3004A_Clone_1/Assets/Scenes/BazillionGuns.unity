@@ -179,6 +179,24 @@ MonoBehaviour:
   - {fileID: 1262037610187963039, guid: 3bc4533f62a9d89418b59f7eb9b790a7, type: 3}
   - {fileID: 2331043550173944801, guid: bed54c1fb5dae004e9d5ea3a86c6d419, type: 3}
   - {fileID: 1586833010010014037, guid: ebfec8bca4f6f7940a6df8df23c402c2, type: 3}
+  Pistolbodypart:
+  - {fileID: 8713152008952312245, guid: ec9682faf949acd468e6858e76c3897b, type: 3}
+  Pistolbarrelpart:
+  - {fileID: 5843417552245941127, guid: 564651c3f59f2c346b88c2c02e90e9be, type: 3}
+  - {fileID: 5284947593731619768, guid: 4d32e717b32e91541a6d0933f67f1f86, type: 3}
+  Pistolstockpart:
+  - {fileID: 6957301747708044247, guid: d715ad33b7ac584438206e535021e420, type: 3}
+  Pistolscopepart:
+  - {fileID: 5296811441671481700, guid: 94f95300d0f9a9344945e46608ab6690, type: 3}
+  - {fileID: 7505812148145381280, guid: 59f00746208eef643a60a85422da7ca7, type: 3}
+  Pistolhandlepart:
+  - {fileID: 3994862976408314700, guid: 59be4ce9f98ef8e499a012dad30a2f7f, type: 3}
+  - {fileID: 1892608526319056010, guid: 30f34fce15c1f0645bd2a056cf7a6649, type: 3}
+  - {fileID: 7883761680212950089, guid: 82f3ffe68eeb0cf48bea559f1681b0d7, type: 3}
+  Pistolmagazinepart:
+  - {fileID: 1586833010010014037, guid: ebfec8bca4f6f7940a6df8df23c402c2, type: 3}
+  - {fileID: 2331043550173944801, guid: bed54c1fb5dae004e9d5ea3a86c6d419, type: 3}
+  - {fileID: 1262037610187963039, guid: 3bc4533f62a9d89418b59f7eb9b790a7, type: 3}
 --- !u!4 &669945231
 Transform:
   m_ObjectHideFlags: 0
