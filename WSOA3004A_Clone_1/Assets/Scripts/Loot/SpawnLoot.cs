@@ -637,7 +637,7 @@ public class SpawnLoot : MonoBehaviour
                         force = (float)UnityEngine.Random.Range(-minF, maxF);
                        // Loot = new GameObject();
                         Loot = Instantiate(ShieldPrefab, enemyDied_DGaG.transform.position, Quaternion.identity);
-                        enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(ShieldPrefab);
+                        // enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(ShieldPrefab);
                         Lootrb = Loot.GetComponent<Rigidbody2D>();
                         Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
 
@@ -651,7 +651,7 @@ public class SpawnLoot : MonoBehaviour
                         Loot = Instantiate(RelicPrefab, enemyDied_DGaG.transform.position, Quaternion.identity);
                         Lootrb = Loot.GetComponent<Rigidbody2D>();
                         Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
-                        enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(RelicPrefab);
+                       // enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(RelicPrefab);
                         Debug.Log(checkWeight.selectGunsAndGear);
                         break;
                 }

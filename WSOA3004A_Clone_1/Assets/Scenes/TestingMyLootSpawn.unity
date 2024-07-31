@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &69979852
 BoxCollider2D:
@@ -301,7 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &187540061
 BoxCollider2D:
@@ -447,7 +445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &380622079
 BoxCollider2D:
@@ -593,7 +590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &470414817
 BoxCollider2D:
@@ -739,7 +735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &509772685
 BoxCollider2D:
@@ -994,7 +989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &648751782
 BoxCollider2D:
@@ -1140,7 +1134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &816144076
 BoxCollider2D:
@@ -1286,7 +1279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &1045230540
 BoxCollider2D:
@@ -1432,7 +1424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &1656865295
 BoxCollider2D:
@@ -1646,7 +1637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &1764631176
 BoxCollider2D:
@@ -1792,7 +1782,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &1895210948
 BoxCollider2D:
@@ -1938,7 +1927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  DropLoot: []
   spawnLootScript: {fileID: 2059454365}
 --- !u!61 &1953095573
 BoxCollider2D:
@@ -2301,8 +2289,8 @@ MonoBehaviour:
   ExperiencePrefab: {fileID: 0}
   min: -10
   max: 10
-  minF: -10
-  maxF: 10
+  minF: -20
+  maxF: 20
 --- !u!4 &2059454366
 Transform:
   m_ObjectHideFlags: 0
