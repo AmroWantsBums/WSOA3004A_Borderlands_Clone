@@ -345,11 +345,21 @@ MonoBehaviour:
     produceRarity: 0
     produceWeaponType: 0
     produceManufacture: 0
+  chubbyEnemy:
+    selectEnemyType_SL: 3
+    itemPools: []
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
   dropOdd_GunsAndGear: 8.5
   dropOdd_Skin: 4
   dropOdd_Money: 30
   dropOdd_EridiumStick: 6
-  dropOdd_Eriumbar: 2
+  dropOdd_Eridiumbar: 0
   dropOdd_HealthRan: 18
   dropOdd_HealthAlways: -1
   dropOdd_HealthEmergency: -1
@@ -443,6 +453,19 @@ MonoBehaviour:
     selectManufacturer: 4
   - Weight: 0
     selectManufacturer: 3
+  GunsPrefab: {fileID: 4938471066158276526, guid: 3dd6d71135b57da4f929caed74708524, type: 3}
+  ShieldPrefab: {fileID: 5947262547858797980, guid: 3bffdb1a3b272f5489274b353c3ce8fa, type: 3}
+  RelicPrefab: {fileID: 5271117864452374298, guid: b8dbb17bc80391b499c56e3ddb6170d9, type: 3}
+  MoneyPrefab: {fileID: 6680930573132553096, guid: b08e902b26e74454bb9b125e96254151, type: 3}
+  EridiumStickPrefab: {fileID: 1190996155013922862, guid: 606ecf6cad9d21043b0c56567deff98b, type: 3}
+  EridiumBarPrefab: {fileID: 787546795443146904, guid: 2a646c92895260240bc482f2db91a86d, type: 3}
+  HealthPrefab: {fileID: 2160691111963579670, guid: 44ab8d89b92a7cd4e9a9ed34c0f80fdc, type: 3}
+  AmmoPrefab: {fileID: 1672967742774812290, guid: b032fdeb8e6d6314fb9c6b6593cd8f67, type: 3}
+  ExperiencePrefab: {fileID: 0}
+  min: -10
+  max: 10
+  minF: -20
+  maxF: 20
 --- !u!4 &2059454366
 Transform:
   m_ObjectHideFlags: 0
