@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1100bcf57d9ff254d86df1bc53a55fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 200
+  healthPoints: 450
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
   Canvas: {fileID: 0}

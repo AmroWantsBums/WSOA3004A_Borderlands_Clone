@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 920022090}
   m_Layer: 7
   m_Name: Gun
-  m_TagString: Slag_Weapon
+  m_TagString: Explosive_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   - {fileID: 4910378822106941659, guid: ab9aca396f745864b85a421968cd1f99, type: 3}
   shootDirection: {x: 0, y: 0}
   bulletSpeed: 5.08
+  weaponDamage: 0
 --- !u!1 &930899860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1677,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 56
+  m_SortingOrder: 85
   m_TargetDisplay: 0
 --- !u!224 &1606996021
 RectTransform:

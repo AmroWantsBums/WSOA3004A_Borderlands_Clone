@@ -13,9 +13,11 @@ public class weaponController : MonoBehaviour
     private bool canFire = true;
     private int Ammo;
     private TextMeshProUGUI ammoText;
+    public int weaponDamage;
     // Start is called before the first frame update
     void Start()
     {
+        weaponDamage = 30;
         Player = GameObject.Find("Player");
         Ammo = 20;
         Weapon = GameObject.Find("Gun");
@@ -35,7 +37,7 @@ public class weaponController : MonoBehaviour
             {
                 //insert the type of weapon here and put in the firerate, bullet type and number of bullets parameters
                 // eg. if (activeWeapon.name == "pistol") {
-                StartCoroutine(Fire(0.4f, 1, Bullets[0]));
+                StartCoroutine(Fire(0.4f, 1, Bullets[0], 0.0f));
                 canFire = false;
                 // }
             }
@@ -43,7 +45,7 @@ public class weaponController : MonoBehaviour
             {
                 //insert the type of weapon here and put in the firerate, bullet type and number of bullets parameters
                 // eg. if (activeWeapon.name == "pistol") {
-                StartCoroutine(Fire(0.4f, 1, Bullets[1]));
+                StartCoroutine(Fire(0.4f, 1, Bullets[1], 0.2f));
                 canFire = false;
                 // }
             }
@@ -51,7 +53,7 @@ public class weaponController : MonoBehaviour
             {
                 //insert the type of weapon here and put in the firerate, bullet type and number of bullets parameters
                 // eg. if (activeWeapon.name == "pistol") {
-                StartCoroutine(Fire(0.4f, 1, Bullets[2]));
+                StartCoroutine(Fire(0.4f, 1, Bullets[2], 0.2f));
                 canFire = false;
                 // }
             }
@@ -59,7 +61,7 @@ public class weaponController : MonoBehaviour
         ammoText.text = $"{Ammo}";
     }
 
-    IEnumerator Fire(float fireRate, int numberOfBullets, GameObject bulletType)
+    IEnumerator Fire(float fireRate, int numberOfBullets, GameObject bulletType, float accuracy)
     {
         if (numberOfBullets <= Ammo)
         {
@@ -67,7 +69,7 @@ public class weaponController : MonoBehaviour
             {
                 GameObject spawnedBullet = Instantiate(bulletType, Weapon.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = spawnedBullet.GetComponent<Rigidbody2D>();
-                Vector2 bulletOffset = new Vector2(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+                Vector2 bulletOffset = new Vector2(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy));
                 shootDirection = (shootDirection + bulletOffset).normalized;
                 bulletRb.AddForce(shootDirection * bulletSpeed, ForceMode2D.Impulse);
                 Ammo = Ammo - numberOfBullets;
