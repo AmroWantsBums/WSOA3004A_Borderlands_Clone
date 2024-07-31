@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3687282226574313380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608247087817750073}
+  - component: {fileID: 8550523089137088302}
+  m_Layer: 0
+  m_Name: SpawnLoot
+  m_TagString: LootManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1608247087817750073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687282226574313380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8550523089137088302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687282226574313380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d066de4b05c1a64badf6d83d50a2ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwitchEnemy:
+    selectEnemyType_SL: 0
+    itemPools: []
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
+  SwitchTest: 1
+  regularEnemy:
+    selectEnemyType_SL: 0
+    itemPools:
+    - dropRate: 0
+      selectPool: 0
+    - dropRate: 0
+      selectPool: 1
+    - dropRate: 0
+      selectPool: 2
+    - dropRate: 0
+      selectPool: 4
+    - dropRate: 0
+      selectPool: 3
+    - dropRate: 0
+      selectPool: 5
+    - dropRate: 0
+      selectPool: 8
+    - dropRate: 0
+      selectPool: 9
+    poolGunsAdGear:
+    - Weight: 0
+      selectGunsAndGear: 0
+    - Weight: 0
+      selectGunsAndGear: 5
+    - Weight: 0
+      selectGunsAndGear: 6
+    rarityPools:
+    - Weight: 0
+      selectRarities: 0
+    - Weight: 0
+      selectRarities: 1
+    - Weight: 0
+      selectRarities: 2
+    - Weight: 0
+      selectRarities: 3
+    - Weight: 0
+      selectRarities: 4
+    weaponTypePools:
+    - Weight: 0
+      selectWeaponType: 0
+    - Weight: 0
+      selectWeaponType: 1
+    - Weight: 0
+      selectWeaponType: 2
+    - Weight: 0
+      selectWeaponType: 3
+    - Weight: 0
+      selectWeaponType: 4
+    - Weight: 0
+      selectWeaponType: 5
+    manufactoresPools:
+    - Weight: 0
+      selectManufacturer: 0
+    - Weight: 0
+      selectManufacturer: 1
+    - Weight: 0
+      selectManufacturer: 2
+    - Weight: 0
+      selectManufacturer: 3
+    - Weight: 0
+      selectManufacturer: 4
+    - Weight: 0
+      selectManufacturer: 5
+    - Weight: 0
+      selectManufacturer: 6
+    - Weight: 0
+      selectManufacturer: 7
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
+  badAssEnemy:
+    selectEnemyType_SL: 1
+    itemPools:
+    - dropRate: 0
+      selectPool: 0
+    - dropRate: 0
+      selectPool: 1
+    - dropRate: 0
+      selectPool: 2
+    - dropRate: 0
+      selectPool: 7
+    - dropRate: 0
+      selectPool: 8
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
+  chubbyEnemy:
+    selectEnemyType_SL: 3
+    itemPools: []
+    poolGunsAdGear: []
+    rarityPools: []
+    weaponTypePools: []
+    manufactoresPools: []
+    produceRarity: 0
+    produceWeaponType: 0
+    produceManufacture: 0
+  dropOdd_GunsAndGear: 8.5
+  dropOdd_Skin: 4
+  dropOdd_Money: 30
+  dropOdd_EridiumStick: 6
+  dropOdd_Eridiumbar: 0
+  dropOdd_HealthRan: 18
+  dropOdd_HealthAlways: -1
+  dropOdd_HealthEmergency: -1
+  dropOdd_AmmoRan: 12
+  dropOdd_AmmoEmergency: -1
+  dropOdd_AmmoAlways: -11
+  Weight_Common: 100
+  Weight_Uncommon: 10
+  Adjust_Weight_Common: 0.45
+  Adjust_Weight_Uncommon_1: 3
+  Adjust_Weight_UnCommon_2: 2.2
+  Common: 900
+  Uncommon: 100
+  AdjustToRare: 10
+  AdjustToVeryRare: 100
+  AdjustToLegendary: 1000
+  Pistol: 100
+  Group: 80
+  Sniper: 55
+  Launcher: 20
+  StandardWeight: 12.5
+  PistolBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
+  ARBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
+  SMGBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 2
+  ShotGunBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 4
+  SniperBrands:
+  - Weight: 0
+    selectManufacturer: 2
+  - Weight: 0
+    selectManufacturer: 7
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 3
+  LuancherBrands:
+  - Weight: 0
+    selectManufacturer: 0
+  - Weight: 0
+    selectManufacturer: 5
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 3
+  GunsPrefab: {fileID: 4938471066158276526, guid: 3dd6d71135b57da4f929caed74708524, type: 3}
+  ShieldPrefab: {fileID: 5947262547858797980, guid: 3bffdb1a3b272f5489274b353c3ce8fa, type: 3}
+  RelicPrefab: {fileID: 5271117864452374298, guid: b8dbb17bc80391b499c56e3ddb6170d9, type: 3}
+  MoneyPrefab: {fileID: 6680930573132553096, guid: b08e902b26e74454bb9b125e96254151, type: 3}
+  EridiumStickPrefab: {fileID: 1190996155013922862, guid: 606ecf6cad9d21043b0c56567deff98b, type: 3}
+  EridiumBarPrefab: {fileID: 787546795443146904, guid: 2a646c92895260240bc482f2db91a86d, type: 3}
+  HealthPrefab: {fileID: 2160691111963579670, guid: 44ab8d89b92a7cd4e9a9ed34c0f80fdc, type: 3}
+  AmmoPrefab: {fileID: 1672967742774812290, guid: b032fdeb8e6d6314fb9c6b6593cd8f67, type: 3}
+  ExperiencePrefab: {fileID: 0}
+  min: -10
+  max: 10
+  minF: -20
+  maxF: 20
