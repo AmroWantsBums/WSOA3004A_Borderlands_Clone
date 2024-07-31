@@ -5,6 +5,7 @@ using TMPro;
 
 public class weaponController : MonoBehaviour
 {
+    private GameObject Player;
     public GameObject Weapon;
     public GameObject[] Bullets; // slot 0 is explosive, 1 is incendiary and 2 is slag
     public Vector2 shootDirection;
@@ -15,6 +16,7 @@ public class weaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Player");
         Ammo = 20;
         Weapon = GameObject.Find("Gun");
         Cursor.visible = false;
@@ -75,13 +77,13 @@ public class weaponController : MonoBehaviour
         }
         else
         {
-            StartCoroutine(reloadWeapon());
+            StartCoroutine(reloadWeapon(2f));
         }        
     }
 
-    IEnumerator reloadWeapon()
+    IEnumerator reloadWeapon(float reloadSeconds)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(reloadSeconds);
         Ammo = 20;
         canFire = true;
     }
