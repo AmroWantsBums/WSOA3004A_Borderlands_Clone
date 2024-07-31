@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: -1127409738496231509}
   - component: {fileID: -2149870835799841120}
   m_Layer: 0
-  m_Name: RaidBoss_Explosive_Enemy
+  m_Name: NamedBoss_Explosive_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6178e824dfa21e42a692acc0bbef902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.7
 --- !u!70 &-2149870835799841120
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: -124370340520671634}
   - component: {fileID: 109618072440308443}
   m_Layer: 0
-  m_Name: RaidBoss_Slag_Enemy
+  m_Name: NamedBoss_Slag_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6178e824dfa21e42a692acc0bbef902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.7
 --- !u!70 &109618072440308443
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

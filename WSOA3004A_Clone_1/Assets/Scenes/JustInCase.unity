@@ -2209,10 +2209,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2cda965c6c7a843bde8ee7a5453a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTypes:
+  chumpEnemies:
   - {fileID: 7608208953187666254, guid: 219cd06450ff3814c8e952bfa7fb5c8f, type: 3}
   - {fileID: 4442871498969917944, guid: c0ccec153b6351c4f92dbf500ca8d3ba, type: 3}
   - {fileID: 482882649779648515, guid: 5da0a0eb29156ce468e7bcd3b1a3b501, type: 3}
+  chubbyEnemies:
+  - {fileID: 8802924176335881507, guid: 4ba71654da78852499dfe867f1473e90, type: 3}
+  - {fileID: 3820247694216061067, guid: cab57dcd94764864eb78795d013533bf, type: 3}
+  - {fileID: 6420080575042077533, guid: f9934ed38ff43644d8067f34018f8169, type: 3}
+  badassEnemies:
+  - {fileID: 8802924176335881507, guid: 473c83eb972352145b3e98171bf7a49e, type: 3}
+  - {fileID: 3820247694216061067, guid: 0530749fe7d9f8141b6122353b495e8e, type: 3}
+  - {fileID: 6420080575042077533, guid: 8ab0bd3a07e19cf498fbf0e57cddab83, type: 3}
+  superBadassEnemies:
+  - {fileID: 8802924176335881507, guid: e394a7e72967eff4a90ff7f688f7b1b4, type: 3}
+  - {fileID: 3820247694216061067, guid: b314a5b74b24dca4db63f9d18e10c13f, type: 3}
+  - {fileID: 6420080575042077533, guid: 11fa1851cd9b3354c9a82af0d5039bab, type: 3}
+  raidBossesEnemies:
+  - {fileID: 6707642332944214493, guid: cd290345e0490ea47a2a630bbca24ecc, type: 3}
+  - {fileID: 3058923987093869376, guid: 401fce019a7c6e94892646052cea6979, type: 3}
+  - {fileID: 7182341731274955380, guid: 522dabdcb1d146a4da7fb819dd6bccb6, type: 3}
+  namedBossesEnemies:
+  - {fileID: 6707642332944214493, guid: 2a8ad756d6cceb943bd74c3ff27d4f9d, type: 3}
+  - {fileID: 3058923987093869376, guid: 3c46937269be5784a8c4fe8f260b0103, type: 3}
+  - {fileID: 7182341731274955380, guid: 12d222fbde33ecf4f958f377313ad956, type: 3}
   spawnPositions:
   - {fileID: 635672925}
   - {fileID: 312819542}
