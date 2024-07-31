@@ -13,6 +13,7 @@ TagManager:
   - Explosive_Weapon
   - Incendiary_Weapon
   - Slag_Weapon
+  - LootManager
   layers:
   - Default
   - TransparentFX
