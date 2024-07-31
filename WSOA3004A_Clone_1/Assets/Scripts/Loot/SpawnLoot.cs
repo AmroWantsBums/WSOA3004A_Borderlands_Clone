@@ -11,12 +11,12 @@ public class SpawnLoot : MonoBehaviour
     private bool SwitchTest = true;
     
    [Header("Enemy Possible Loot Drops")]
-    public EnemyType regularEnemy, badAssEnemy;
+    public EnemyType regularEnemy, badAssEnemy, chubbyEnemy;
     
 
     [Header("DropStats")]
     [SerializeField]
-    private float dropOdd_GunsAndGear, dropOdd_Skin, dropOdd_Money, dropOdd_EridiumStick, dropOdd_Eriumbar, dropOdd_HealthRan, dropOdd_HealthAlways, dropOdd_HealthEmergency, dropOdd_AmmoRan, dropOdd_AmmoEmergency, dropOdd_AmmoAlways;
+    private float dropOdd_GunsAndGear, dropOdd_Skin, dropOdd_Money, dropOdd_EridiumStick, dropOdd_Eridiumbar, dropOdd_HealthRan, dropOdd_HealthAlways, dropOdd_HealthEmergency, dropOdd_AmmoRan, dropOdd_AmmoEmergency, dropOdd_AmmoAlways;
 
     [Header("Weights for Guns and Gear")]
     [SerializeField]
@@ -37,7 +37,13 @@ public class SpawnLoot : MonoBehaviour
     [Header("Who makes What")]
     [SerializeField]
     private List<EnemyType.ManufactoresPool> PistolBrands, ARBrands, SMGBrands, ShotGunBrands, SniperBrands, LuancherBrands;
-    
+
+    [Header("Prefabs for Drops")]
+    [SerializeField]
+    private GameObject GunsPrefab, ShieldPrefab, RelicPrefab, MoneyPrefab, EridiumStickPrefab, EridiumBarPrefab, HealthPrefab, AmmoPrefab, ExperiencePrefab;
+
+    [SerializeField]
+    private float min, max, minF, maxF;
 
 
     [SerializeField]
@@ -204,7 +210,7 @@ public class SpawnLoot : MonoBehaviour
                     regularEnemy.itemPools[i] = modifyPool;
                     break;
                 case EnemyType.ItemPools.AvailablePools.EridiumBar:
-                    modifyPool.dropRate = dropOdd_Eriumbar;
+                    modifyPool.dropRate = dropOdd_Eridiumbar;
                     regularEnemy.itemPools[i] = modifyPool;
                     break;
                 case EnemyType.ItemPools.AvailablePools.HealthRan:
@@ -378,7 +384,7 @@ public class SpawnLoot : MonoBehaviour
                     badAssEnemy.itemPools[i] = modifyPool;
                     break;
                 case EnemyType.ItemPools.AvailablePools.EridiumBar:
-                    modifyPool.dropRate = dropOdd_Eriumbar * 1.5f;
+                    modifyPool.dropRate = dropOdd_Eridiumbar * 1.5f;
                     badAssEnemy.itemPools[i] = modifyPool;
                     break;
                 case EnemyType.ItemPools.AvailablePools.HealthRan:
@@ -454,23 +460,45 @@ public class SpawnLoot : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            DetermineLootToSpawn(SwitchEnemy);
-        }
-
-        if (SwitchTest == true)
-        {
-            SwitchEnemy = regularEnemy;
-        }
-        else
-        {
-            SwitchEnemy = badAssEnemy;
-        }
+       
     }
 
-    private void DetermineLootToSpawn(EnemyType typeKilled)
+    public void DetermineEnemy(GameObject enemyDied)
     {
+        EnemyType.enemies enemy = enemyDied.GetComponent<TestingStuff>().enemy;
+
+        switch (enemy)
+        {
+            case EnemyType.enemies.Chumps:
+                 DetermineLootToSpawn(regularEnemy, enemyDied);
+                break;
+            case EnemyType.enemies.Badass:
+                DetermineLootToSpawn(badAssEnemy, enemyDied);
+                break;
+            case EnemyType.enemies.SuperBadass:
+                break;
+            case EnemyType.enemies.Chubby:
+                DetermineLootToSpawn(chubbyEnemy, enemyDied);
+                break;
+            case EnemyType.enemies.RaidBosses:
+                break;
+            case EnemyType.enemies.NamedBosses:
+                break;
+        }
+
+        
+        
+    }
+
+
+        private void DetermineLootToSpawn(EnemyType typeKilled, GameObject enemyDied_DLTS) //DLTS=DetermineLootToSpawn
+    {
+        Rigidbody2D Lootrb;
+        GameObject Loot;
+        Vector2 direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+        float force;
+      
+
         for (int i = 0; i  < typeKilled.itemPools.Count; i++)
         {
             float ranNum = UnityEngine.Random.Range(0, 100);
@@ -483,21 +511,56 @@ public class SpawnLoot : MonoBehaviour
                 {
                     case EnemyType.ItemPools.AvailablePools.GunsAndGear:
                         Debug.Log(checkDrop.selectPool);
-                        DetermineGunsAndGear(typeKilled);
+                        DetermineGunsAndGear(typeKilled, enemyDied_DLTS);
+                        //enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         break;
                     case EnemyType.ItemPools.AvailablePools.Skin:
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.Money:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+
+                     //   Loot = new GameObject();
+                        Loot = Instantiate(MoneyPrefab, enemyDied_DLTS.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        //Lootrb.AddForce()
+                       // enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(MoneyPrefab);
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.EridiumStick:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(EridiumStickPrefab, enemyDied_DLTS.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                     //   enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(EridiumStickPrefab);
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.EridiumBar:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(EridiumBarPrefab, enemyDied_DLTS.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                      //  enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(EridiumBarPrefab);
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.HealthRan:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(HealthPrefab, enemyDied_DLTS.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                     //   enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(HealthPrefab);
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.HealthAlways:
@@ -507,6 +570,14 @@ public class SpawnLoot : MonoBehaviour
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.AmmoRan:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(AmmoPrefab, enemyDied_DLTS.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                     //   enemyDied_DLTS.GetComponent<TestingStuff>().DropLoot.Add(AmmoPrefab);
                         Debug.Log(checkDrop.selectPool);
                         break;
                     case EnemyType.ItemPools.AvailablePools.AmmoEmergency:
@@ -517,12 +588,19 @@ public class SpawnLoot : MonoBehaviour
                         break;
                 }
             }
+
+            
         }
     
     }
 
-    private void DetermineGunsAndGear(EnemyType Killed)
+    private void DetermineGunsAndGear(EnemyType Killed, GameObject enemyDied_DGaG) // DGaG = DetermineGunsAndGear
     {
+        Rigidbody2D Lootrb;
+        GameObject Loot;
+        Vector2 direction;
+        float force;
+
         float maxValue = 0;
         for (int i = 0; i < Killed.poolGunsAdGear.Count; i++)
         {
@@ -542,8 +620,8 @@ public class SpawnLoot : MonoBehaviour
                 switch (checkWeight.selectGunsAndGear)
                 {
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_All:
-                       Debug.Log(checkWeight.selectGunsAndGear);
-                        DetermineRarityOfWeapon(Killed);
+                        Debug.Log(checkWeight.selectGunsAndGear);
+                        DetermineRarityOfWeapon(Killed, enemyDied_DGaG);
                         break;
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_UncommonUp:
                         break;
@@ -554,9 +632,26 @@ public class SpawnLoot : MonoBehaviour
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Weapons_Legendary:
                         break;
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Shields:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(ShieldPrefab, enemyDied_DGaG.transform.position, Quaternion.identity);
+                        enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(ShieldPrefab);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+
                         Debug.Log(checkWeight.selectGunsAndGear);
                         break;
                     case EnemyType.PoolGunsAndGear.AvailableGunsAndGear.Relics:
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(RelicPrefab, enemyDied_DGaG.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        enemyDied_DGaG.GetComponent<TestingStuff>().DropLoot.Add(RelicPrefab);
                         Debug.Log(checkWeight.selectGunsAndGear);
                         break;
                 }
@@ -566,7 +661,7 @@ public class SpawnLoot : MonoBehaviour
         }
     }
 
-    private void DetermineRarityOfWeapon(EnemyType killed)
+    private void DetermineRarityOfWeapon(EnemyType killed, GameObject enemyDied_DRW)// DRW = DetermineRarityOfWeapon
     {
         float maxValue = 0;
         for (int i = 0; i < killed.rarityPools.Count; i++)
@@ -605,14 +700,14 @@ public class SpawnLoot : MonoBehaviour
                 }
 
                 Debug.Log(killed.produceRarity);
-                DetermineWeaponType(killed);
+                DetermineWeaponType(killed, enemyDied_DRW );
                 return;
             }
         }
         
     }
 
-    private void DetermineWeaponType(EnemyType killed)
+    private void DetermineWeaponType(EnemyType killed, GameObject enemyDied_DWT) // DWT = DetermineWeaponType
     {
         float maxValue = 0;
         for (int i = 0; i < killed.weaponTypePools.Count; i++)
@@ -654,14 +749,19 @@ public class SpawnLoot : MonoBehaviour
                 }
 
                  Debug.Log(killed.produceWeaponType);
-                DetermineManufacturer(killed);
-                return;
+                 DetermineManufacturer(killed, enemyDied_DWT);
+                 return;
             }
         }
     }
 
-    private void DetermineManufacturer(EnemyType killed)
+    private void DetermineManufacturer(EnemyType killed, GameObject enemyDied_DMf) //DMf = DetermineManufacturer
     {
+        Rigidbody2D Lootrb;
+        GameObject Loot;
+        Vector2 direction;
+        float force;
+
         switch (killed.produceWeaponType)
         {
             case EnemyType.WeaponTypePool.WeaponType.Pistol:
@@ -710,7 +810,15 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                      //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
@@ -762,7 +870,15 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                      //  Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                      //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
@@ -813,7 +929,15 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                       // enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
@@ -865,8 +989,16 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
-                       Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                      //  Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                      //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
+                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
                 }
@@ -916,7 +1048,15 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                       // Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                       // enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
@@ -967,8 +1107,16 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
+                        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
 
-                       Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        force = (float)UnityEngine.Random.Range(-minF, maxF);
+                      //  Loot = new GameObject();
+                        Loot = Instantiate(GunsPrefab, enemyDied_DMf.transform.position, Quaternion.identity);
+                        Lootrb = Loot.GetComponent<Rigidbody2D>();
+                        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                        //enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
+                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
                 }
@@ -979,54 +1127,7 @@ public class SpawnLoot : MonoBehaviour
 
        
 
-        //float maxValue = 0;
-        //for (int i = 0; i < killed.manufactoresPools.Count; i++)
-        //{
-        //    EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
-        //    maxValue = maxValue + checkWeight.Weight;
-        //}
-
-        //float ranNum = UnityEngine.Random.Range(0, maxValue);
-
-        //float TotalTicketsInbowl = 0;
-        //for (int i = 0; i < killed.manufactoresPools.Count; i++)
-        //{
-        //    EnemyType.ManufactoresPool checkWeight = killed.manufactoresPools[i];
-        //    TotalTicketsInbowl = TotalTicketsInbowl + checkWeight.Weight;
-
-        //    if (ranNum <= TotalTicketsInbowl)
-        //    {
-        //        switch (checkWeight.selectManufacturer)
-        //        {
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Bandit:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Bandit;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Tediore:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Tediore;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Dahl:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Dahl;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Vladoff:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Vladoff;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Torgue:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Torgue;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Maliwan:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Maliwan;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Jacobs:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Jacobs;
-        //                break;
-        //            case EnemyType.ManufactoresPool.AllManufacterus.Hyperion:
-        //                killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
-        //                break;
-        //        }
-
-        //        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
-        //        return;
-        //    }
-        //}
+      
     }
+    
 }
