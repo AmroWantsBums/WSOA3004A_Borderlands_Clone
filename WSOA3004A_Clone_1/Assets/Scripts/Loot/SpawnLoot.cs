@@ -465,7 +465,8 @@ public class SpawnLoot : MonoBehaviour
 
     public void DetermineEnemy(GameObject enemyDied)
     {
-        EnemyType.enemies enemy = enemyDied.GetComponent<TestingStuff>().enemy;
+        // EnemyType.enemies enemy = enemyDied.GetComponent<en
+        EnemyType.enemies enemy = enemyDied.GetComponent<enemyHealth>().enemy;
 
         switch (enemy)
         {

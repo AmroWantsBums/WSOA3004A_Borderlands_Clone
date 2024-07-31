@@ -12,7 +12,15 @@ public class enemyHealth : MonoBehaviour
     public GameObject Canvas;
     private Slider healthBar;
     private GameObject Enemy;
-    
+    public SpawnLoot.EnemyType.enemies enemy;
+    [SerializeField]
+    private SpawnLoot spawnLootScript;
+
+    void Awake()
+    {
+        spawnLootScript = GameObject.Find("SpawnLoot").GetComponent<SpawnLoot>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +65,7 @@ public class enemyHealth : MonoBehaviour
 
     void Die()
     {
+        spawnLootScript.DetermineEnemy(gameObject);
         Destroy(gameObject);
         Destroy(healthBar);
     }
