@@ -186,9 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawStats:
-  - stat: 0
-    minStatValue: 5
-    maxStatValue: 19
+  - stat: 6
+    minStatValue: 1
+    maxStatValue: 1
+  rarityLevel: 0
   barrelSocket: {fileID: 2333138756244778162}
   scopeSocket: {fileID: 306820923260734301}
   handleSocket: {fileID: 1036188777232622892}

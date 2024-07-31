@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawStats:
-  - stat: 0
-    minStatValue: 0
-    maxStatValue: 0
+  - stat: 1
+    minStatValue: 3
+    maxStatValue: 7
+  rarityLevel: 2
 --- !u!1 &3709579935837943212
 GameObject:
   m_ObjectHideFlags: 0

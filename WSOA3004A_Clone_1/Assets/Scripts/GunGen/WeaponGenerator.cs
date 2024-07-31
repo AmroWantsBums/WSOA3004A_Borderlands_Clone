@@ -147,8 +147,8 @@ public class WeaponGenerator : WeaponBody
        WeaponPart magazine = SpawnPistolPart(Pistolmagazinepart,pistolBody.magazineSocket);
         //get random body from list
         //instantiate it
+       // pistolBody.Initialize(barrel, scope, stock, handle, magazine);
         pistolBody.Initialize(barrel, scope, stock, handle, magazine);
-
         
     }
 
@@ -157,17 +157,18 @@ public class WeaponGenerator : WeaponBody
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody RocketBody = insBody.GetComponent<WeaponBody>();
 
-        SpawnRocketPart(Rocketbarrelpart,RocketBody.barrelSocket);
+        WeaponPart barrel =  SpawnRocketPart(Rocketbarrelpart,RocketBody.barrelSocket);
 
-        SpawnRocketPart(Rocketstockpart,RocketBody.stockSocket);
+      WeaponPart stock =  SpawnRocketPart(Rocketstockpart,RocketBody.stockSocket);
 
-        SpawnRocketPart(Rockethandlepart,RocketBody.handleSocket);
+       WeaponPart handle = SpawnRocketPart(Rockethandlepart,RocketBody.handleSocket);
 
-        SpawnRocketPart(Rocketscopepart,RocketBody.scopeSocket);
+       WeaponPart scope =  SpawnRocketPart(Rocketscopepart,RocketBody.scopeSocket);
 
-        SpawnRocketPart(Rocketmagazinepart,RocketBody.magazineSocket);
+       WeaponPart magazine = SpawnRocketPart(Rocketmagazinepart,RocketBody.magazineSocket);
         //get random body from list
         //instantiate it
+        RocketBody.Initialize(barrel, scope, stock, handle, magazine);
     }
 
     void GenerateSniper(){// random for pistol only
@@ -175,17 +176,18 @@ public class WeaponGenerator : WeaponBody
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody SniperBody = insBody.GetComponent<WeaponBody>();
 
-        SpawnSniperPart(Sniperbarrelpart,SniperBody.barrelSocket);
+       WeaponPart barrel =   SpawnSniperPart(Sniperbarrelpart,SniperBody.barrelSocket);
 
-        SpawnSniperPart(Sniperstockpart,SniperBody.stockSocket);
+       WeaponPart stock = SpawnSniperPart(Sniperstockpart,SniperBody.stockSocket);
 
-        SpawnSniperPart(Sniperhandlepart,SniperBody.handleSocket);
+      WeaponPart handle =  SpawnSniperPart(Sniperhandlepart,SniperBody.handleSocket);
 
-        SpawnSniperPart(Sniperscopepart,SniperBody.scopeSocket);
+       WeaponPart scope = SpawnSniperPart(Sniperscopepart,SniperBody.scopeSocket);
 
-        SpawnSniperPart(Snipermagazinepart,SniperBody.magazineSocket);
+        WeaponPart magazine = SpawnSniperPart(Snipermagazinepart,SniperBody.magazineSocket);
         //get random body from list
         //instantiate it
+        SniperBody.Initialize(barrel, scope, stock, handle, magazine);
     }
 
     void GenerateShotgun(){// random for pistol only
@@ -193,17 +195,18 @@ public class WeaponGenerator : WeaponBody
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody ShotgunBody = insBody.GetComponent<WeaponBody>();
 
-        SpawnShotgunPart(Shotgunbarrelpart,ShotgunBody.barrelSocket);
+        WeaponPart barrel =  SpawnShotgunPart(Shotgunbarrelpart,ShotgunBody.barrelSocket);
 
-        SpawnShotgunPart(Shotgunstockpart,ShotgunBody.stockSocket);
+      WeaponPart stock =  SpawnShotgunPart(Shotgunstockpart,ShotgunBody.stockSocket);
 
-        SpawnShotgunPart(Shotgunhandlepart,ShotgunBody.handleSocket);
+      WeaponPart handle =   SpawnShotgunPart(Shotgunhandlepart,ShotgunBody.handleSocket);
 
-        SpawnShotgunPart(Shotgunscopepart,ShotgunBody.scopeSocket);
+       WeaponPart scope =  SpawnShotgunPart(Shotgunscopepart,ShotgunBody.scopeSocket);
 
-        SpawnShotgunPart(Shotgunmagazinepart,ShotgunBody.magazineSocket);
+      WeaponPart magazine =  SpawnShotgunPart(Shotgunmagazinepart,ShotgunBody.magazineSocket);
         //get random body from list
         //instantiate it
+        ShotgunBody.Initialize(barrel, scope, stock, handle, magazine);
     }
 
     void GenerateSmg(){// random for pistol only
@@ -211,17 +214,18 @@ public class WeaponGenerator : WeaponBody
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody SmgBody = insBody.GetComponent<WeaponBody>();
 
-        SpawnSmgPart(Smgbarrelpart,SmgBody.barrelSocket);
+       WeaponPart barrel =   SpawnSmgPart(Smgbarrelpart,SmgBody.barrelSocket);
 
-        SpawnSmgPart(Smgstockpart,SmgBody.stockSocket);
+      WeaponPart stock =   SpawnSmgPart(Smgstockpart,SmgBody.stockSocket);
 
-        SpawnSmgPart(Smghandlepart,SmgBody.handleSocket);
+       WeaponPart handle =   SpawnSmgPart(Smghandlepart,SmgBody.handleSocket);
 
-        SpawnSmgPart(Smgscopepart,SmgBody.scopeSocket);
+       WeaponPart scope =  SpawnSmgPart(Smgscopepart,SmgBody.scopeSocket);
 
-        SpawnSmgPart(Smgmagazinepart,SmgBody.magazineSocket);
+       WeaponPart magazine = SpawnSmgPart(Smgmagazinepart,SmgBody.magazineSocket);
         //get random body from list
         //instantiate it
+       SmgBody.Initialize(barrel, scope, stock, handle, magazine);
     }
 
     void GenerateRifle(){// random for pistol only
@@ -229,17 +233,18 @@ public class WeaponGenerator : WeaponBody
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody RifleBody = insBody.GetComponent<WeaponBody>();
 
-        SpawnRiflePart(Riflebarrelpart,RifleBody.barrelSocket);
+       WeaponPart barrel =  SpawnRiflePart(Riflebarrelpart,RifleBody.barrelSocket);
 
-        SpawnRiflePart(Riflestockpart,RifleBody.stockSocket);
+      WeaponPart stock =   SpawnRiflePart(Riflestockpart,RifleBody.stockSocket);
 
-        SpawnRiflePart(Riflehandlepart,RifleBody.handleSocket);
+       WeaponPart handle =  SpawnRiflePart(Riflehandlepart,RifleBody.handleSocket);
 
-        SpawnRiflePart(Riflescopepart,RifleBody.scopeSocket);
+       WeaponPart scope =  SpawnRiflePart(Riflescopepart,RifleBody.scopeSocket);
 
-        SpawnRiflePart(Riflemagazinepart,RifleBody.magazineSocket);
+       WeaponPart magazine =   SpawnRiflePart(Riflemagazinepart,RifleBody.magazineSocket);
         //get random body from list
         //instantiate it
+        RifleBody.Initialize(barrel, scope, stock, handle, magazine);
     }
 
     
