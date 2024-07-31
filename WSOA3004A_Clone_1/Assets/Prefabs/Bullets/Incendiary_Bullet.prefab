@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2996934068631190275}
   - component: {fileID: -2816296503735531727}
   - component: {fileID: -5170064304168674170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Incendiary_Bullet
   m_TagString: Incendiary_Bullet
   m_Icon: {fileID: 0}

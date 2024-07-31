@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: -259493801195736387}
   - component: {fileID: 5710002106534637055}
   m_Layer: 6
-  m_Name: Incendiary_Enemy
+  m_Name: Chubby_Incendiary_Enemy
   m_TagString: Incendiary_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
