@@ -46,8 +46,8 @@ public class enemyHealth : MonoBehaviour
         if (enemyVulnerable)
         {
             healthPoints = healthPoints - (damageTaken * 2f);
-            Vector2 SpawnPosition = new Vector2(transform.position.x, transform.position.y + 20);
-            Instantiate(criticalHitTxt, transform.position, Quaternion.identity, Canvas.transform);
+            Vector2 SpawnPosition = new Vector2(transform.position.x, transform.position.y + 0.8f);
+            Instantiate(criticalHitTxt, SpawnPosition, Quaternion.identity, Canvas.transform);
         }
         else
         {
@@ -71,7 +71,7 @@ public class enemyHealth : MonoBehaviour
     {
         float newHealthPoints = healthPoints / 200;
         healthBar.value = newHealthPoints;
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(Enemy.transform.position + Vector3.up * 1.05f); 
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(Enemy.transform.position + Vector3.up * 1.001f); 
         healthBar.transform.position = screenPosition;
     }
 }

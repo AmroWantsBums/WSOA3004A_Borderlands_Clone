@@ -27,8 +27,18 @@ public class weaponController : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Weapon.transform.up = mousePos;
-        shootDirection = (mousePos - (Vector2)Weapon.transform.position).normalized;
+
+        // Calculate direction from the weapon to the mouse position
+        Vector2 direction = (mousePos - (Vector2)Weapon.transform.position).normalized;
+
+        // Calculate the angle needed to rotate towards the mouse
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Apply the rotation to the weapon
+        Weapon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        // Store the shoot direction
+        shootDirection = direction;
         if (Input.GetMouseButton(0) && canFire)
         {
             if (Weapon.CompareTag("Explosive_Weapon"))

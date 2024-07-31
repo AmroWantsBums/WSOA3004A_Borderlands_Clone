@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6429347523467793937}
   - component: {fileID: -2772370648065438687}
   - component: {fileID: -441735074182211633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slag_Enemy
   m_TagString: Slag_Enemy
   m_Icon: {fileID: 0}

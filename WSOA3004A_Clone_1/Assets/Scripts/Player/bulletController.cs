@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class bulletController : MonoBehaviour
 {
-    public GameObject sparkParticleEffect;
+    public GameObject sparkParticleEffect;  
     // Start is called before the first frame update
     void Start()
     {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int bulletLayer = LayerMask.NameToLayer("Bullet");
 
+        Physics2D.IgnoreLayerCollision(playerLayer, bulletLayer, true);
     }
 
     // Update is called once per frame

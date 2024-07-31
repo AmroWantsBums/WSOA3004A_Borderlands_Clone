@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6657191358081403128}
   - component: {fileID: -2059404835849892410}
   - component: {fileID: -3038477589726297921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slag_Bullet
   m_TagString: Slag_Bullet
   m_Icon: {fileID: 0}
