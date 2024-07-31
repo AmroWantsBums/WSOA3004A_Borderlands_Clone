@@ -1389,6 +1389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7308768061682197882}
   - component: {fileID: -1641971769598152058}
+  - component: {fileID: 1326037393941676503}
   m_Layer: 0
   m_Name: weaponparts
   m_TagString: Untagged
@@ -1441,6 +1442,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad6931c712711f49af81981036306a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barrelSocket: {fileID: 0}
+  scopeSocket: {fileID: 0}
+  handleSocket: {fileID: 0}
+  magazineSocket: {fileID: 0}
+  stockSocket: {fileID: 0}
+--- !u!114 &1326037393941676503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782169029364374309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b7ff262d14830459e3adda923931f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawStats: []
 --- !u!1 &7179111048717528547
 GameObject:
   m_ObjectHideFlags: 0
