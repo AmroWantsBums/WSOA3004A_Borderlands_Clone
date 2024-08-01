@@ -61,8 +61,6 @@ MonoBehaviour:
     - dropRate: 0
       selectPool: 0
     - dropRate: 0
-      selectPool: 1
-    - dropRate: 0
       selectPool: 2
     - dropRate: 0
       selectPool: 4
@@ -72,8 +70,6 @@ MonoBehaviour:
       selectPool: 5
     - dropRate: 0
       selectPool: 8
-    - dropRate: 0
-      selectPool: 9
     poolGunsAdGear:
     - Weight: 0
       selectGunsAndGear: 0
@@ -131,41 +127,164 @@ MonoBehaviour:
     - dropRate: 0
       selectPool: 0
     - dropRate: 0
-      selectPool: 1
-    - dropRate: 0
       selectPool: 2
     - dropRate: 0
-      selectPool: 7
+      selectPool: 4
+    - dropRate: 0
+      selectPool: 3
+    - dropRate: 0
+      selectPool: 5
     - dropRate: 0
       selectPool: 8
-    poolGunsAdGear: []
-    rarityPools: []
-    weaponTypePools: []
-    manufactoresPools: []
+    poolGunsAdGear:
+    - Weight: 0
+      selectGunsAndGear: 0
+    - Weight: 0
+      selectGunsAndGear: 5
+    - Weight: 0
+      selectGunsAndGear: 6
+    rarityPools:
+    - Weight: 0
+      selectRarities: 0
+    - Weight: 0
+      selectRarities: 1
+    - Weight: 0
+      selectRarities: 2
+    - Weight: 0
+      selectRarities: 3
+    - Weight: 0
+      selectRarities: 4
+    weaponTypePools:
+    - Weight: 0
+      selectWeaponType: 0
+    - Weight: 0
+      selectWeaponType: 1
+    - Weight: 0
+      selectWeaponType: 2
+    - Weight: 0
+      selectWeaponType: 3
+    - Weight: 0
+      selectWeaponType: 4
+    - Weight: 0
+      selectWeaponType: 5
+    manufactoresPools:
+    - Weight: 0
+      selectManufacturer: 0
+    - Weight: 0
+      selectManufacturer: 1
+    - Weight: 0
+      selectManufacturer: 2
+    - Weight: 0
+      selectManufacturer: 3
+    - Weight: 0
+      selectManufacturer: 4
+    - Weight: 0
+      selectManufacturer: 5
+    - Weight: 0
+      selectManufacturer: 6
+    - Weight: 0
+      selectManufacturer: 7
     produceRarity: 0
     produceWeaponType: 0
     produceManufacture: 0
   chubbyEnemy:
     selectEnemyType_SL: 3
-    itemPools: []
-    poolGunsAdGear: []
-    rarityPools: []
-    weaponTypePools: []
-    manufactoresPools: []
+    itemPools:
+    - dropRate: 0
+      selectPool: 0
+    - dropRate: 0
+      selectPool: 2
+    - dropRate: 0
+      selectPool: 4
+    - dropRate: 0
+      selectPool: 3
+    - dropRate: 0
+      selectPool: 5
+    - dropRate: 0
+      selectPool: 8
+    poolGunsAdGear:
+    - Weight: 0
+      selectGunsAndGear: 0
+    - Weight: 0
+      selectGunsAndGear: 5
+    - Weight: 0
+      selectGunsAndGear: 6
+    rarityPools:
+    - Weight: 0
+      selectRarities: 0
+    - Weight: 0
+      selectRarities: 1
+    - Weight: 0
+      selectRarities: 2
+    - Weight: 0
+      selectRarities: 3
+    - Weight: 0
+      selectRarities: 4
+    weaponTypePools:
+    - Weight: 0
+      selectWeaponType: 0
+    - Weight: 0
+      selectWeaponType: 1
+    - Weight: 0
+      selectWeaponType: 2
+    - Weight: 0
+      selectWeaponType: 3
+    - Weight: 0
+      selectWeaponType: 4
+    - Weight: 0
+      selectWeaponType: 5
+    manufactoresPools:
+    - Weight: 0
+      selectManufacturer: 0
+    - Weight: 0
+      selectManufacturer: 1
+    - Weight: 0
+      selectManufacturer: 2
+    - Weight: 0
+      selectManufacturer: 3
+    - Weight: 0
+      selectManufacturer: 4
+    - Weight: 0
+      selectManufacturer: 5
+    - Weight: 0
+      selectManufacturer: 6
+    - Weight: 0
+      selectManufacturer: 7
     produceRarity: 0
     produceWeaponType: 0
     produceManufacture: 0
   dropOdd_GunsAndGear: 8.5
-  dropOdd_Skin: 4
-  dropOdd_Money: 30
-  dropOdd_EridiumStick: 6
-  dropOdd_Eridiumbar: 0
-  dropOdd_HealthRan: 18
-  dropOdd_HealthAlways: -1
+  dropOdd_Money: 20
+  dropOdd_EridiumStick: 15
+  dropOdd_Eridiumbar: 5
+  dropOdd_HealthRan: 20
+  dropOdd_HealthNeed: 0
   dropOdd_HealthEmergency: -1
-  dropOdd_AmmoRan: 12
+  dropOdd_AmmoRan: 20
   dropOdd_AmmoEmergency: -1
-  dropOdd_AmmoAlways: -11
+  dropOdd_AmmoNeed: 0
+  bA_SGaG: 2
+  bA_SM: 2
+  bA_SES: 2
+  bA_SEB: 2
+  bA_SHR: 2
+  bA_SAR: 2
+  bA_SCommon: 900
+  bA_SUncommon: 100
+  bA_SRare: 10
+  bA_SVeryRare: 1
+  bA_SLegendary: 0.1
+  c_SGaG: 3
+  c_SM: 3
+  c_SES: 3
+  c_SEB: 3
+  c_SHR: 3
+  c_SAR: 3
+  c_SCommon: 900
+  c_SUncommon: 100
+  c_SRare: 30
+  c_SVeryRare: 20
+  c_SLegendary: 10
   Weight_Common: 100
   Weight_Uncommon: 10
   Adjust_Weight_Common: 0.45
