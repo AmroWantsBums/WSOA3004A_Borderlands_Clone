@@ -1229,6 +1229,8 @@ public class SpawnLoot : MonoBehaviour
     {
         Debug.Log("Fok my" + Gun);
         Gun.transform.position = EnemyDied.transform.position;
+        Gun.layer = 14;
+        Debug.Log(Gun.layer);
         //Rigidbody2D Lootrb;
         //Vector2 direction;
         //float force;
