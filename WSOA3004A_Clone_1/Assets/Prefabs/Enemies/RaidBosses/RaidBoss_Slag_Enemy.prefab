@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3051614877651442865}
   - component: {fileID: 9113963294492132427}
   - component: {fileID: 2656136931130725110}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8205728242354800610}
   - component: {fileID: 4137609976146083060}
   - component: {fileID: 4671313156655922048}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2579462223141413089}
   - component: {fileID: 5940532801063173504}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8242400896514764822}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3908469309855082466}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 8736393679128697037}
   - component: {fileID: 8886365264056890486}
   - component: {fileID: 6932995234429950186}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,9 +406,9 @@ GameObject:
   - component: {fileID: 4436943344058836282}
   - component: {fileID: -124370340520671634}
   - component: {fileID: 109618072440308443}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RaidBoss_Slag_Enemy
-  m_TagString: Untagged
+  m_TagString: Slag_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,6 +496,7 @@ MonoBehaviour:
   healthPoints: 500
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 4
   spawnLootScript: {fileID: 0}
@@ -559,7 +560,7 @@ GameObject:
   - component: {fileID: 7295397694471520863}
   - component: {fileID: 5859631467368446271}
   - component: {fileID: 6011956867831997148}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

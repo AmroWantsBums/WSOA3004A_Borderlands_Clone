@@ -11,7 +11,7 @@ public class weaponController : MonoBehaviour
     public Vector2 shootDirection;
     public float bulletSpeed;
     private bool canFire = true;
-    private int Ammo;
+    public int Ammo;
     private TextMeshProUGUI ammoText;
     public int weaponDamage;
     // Start is called before the first frame update
@@ -29,7 +29,8 @@ public class weaponController : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Weapon.transform.up = mousePos;
+        Vector2 direction = mousePos - (Vector2)Weapon.transform.position;
+        Weapon.transform.up = direction;
         shootDirection = (mousePos - (Vector2)Weapon.transform.position).normalized;
         if (Input.GetMouseButton(0) && canFire)
         {

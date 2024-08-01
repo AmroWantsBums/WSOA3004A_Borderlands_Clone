@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2021985359860091803}
   - component: {fileID: 2365487300752929831}
   - component: {fileID: 6391546025527318668}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8039773360346059511}
   - component: {fileID: 2292078116291330918}
   - component: {fileID: 1984752795311191783}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425025250751885902}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9185400388913934338}
   - component: {fileID: 8370693209691521637}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 373852787665062694}
   - component: {fileID: 8091967086279942342}
   - component: {fileID: 7596406879672135058}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4449578751719615277}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,9 +406,9 @@ GameObject:
   - component: {fileID: 288330591516270710}
   - component: {fileID: -2637438433926042632}
   - component: {fileID: -689356857199375820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chubby_Explosive_Enemy
-  m_TagString: Untagged
+  m_TagString: Explosive_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,6 +496,7 @@ MonoBehaviour:
   healthPoints: 200
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 3
   spawnLootScript: {fileID: 0}
@@ -559,7 +560,7 @@ GameObject:
   - component: {fileID: 5329116191768216576}
   - component: {fileID: 5200932144453719641}
   - component: {fileID: 6203442930412231057}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

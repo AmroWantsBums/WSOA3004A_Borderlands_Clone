@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804791179177493055}
   - component: {fileID: 5076286678287492798}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 3720120166822724823}
   - component: {fileID: 5291104872138236940}
   - component: {fileID: 9050191943785256464}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8623323536251106677}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4711600633205850371}
   - component: {fileID: 7609705314262460177}
   - component: {fileID: 5696762090172416412}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,9 +293,9 @@ GameObject:
   - component: {fileID: 6074165699988594032}
   - component: {fileID: 5789225300984195495}
   - component: {fileID: 3929890488487664254}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: NamedBoss_Incendiary_Enemy
-  m_TagString: Untagged
+  m_TagString: Incendiary_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   healthPoints: 700
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 5
   spawnLootScript: {fileID: 0}
@@ -446,7 +447,7 @@ GameObject:
   - component: {fileID: 5792089309664097489}
   - component: {fileID: 2448409768445019869}
   - component: {fileID: 4786195260873762444}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5508909440588777110}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +586,7 @@ GameObject:
   - component: {fileID: 3122855949789003365}
   - component: {fileID: 7511728977242992475}
   - component: {fileID: 7619357210849602576}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

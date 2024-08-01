@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1499201206611083255}
   - component: {fileID: 2351399929521128599}
   - component: {fileID: 2494586180878114676}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 634349775543674213}
   - component: {fileID: 766447707772750302}
   - component: {fileID: 1280918332943525186}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5174040174281333322}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257459379074338238}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,9 +266,9 @@ GameObject:
   - component: {fileID: -8229551200315904943}
   - component: {fileID: -8769887519009695658}
   - component: {fileID: -7809183647184719159}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Badass_Slag_Enemy
-  m_TagString: Untagged
+  m_TagString: Slag_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +356,7 @@ MonoBehaviour:
   healthPoints: 300
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 1
   spawnLootScript: {fileID: 0}
@@ -417,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5925709309939555657}
   - component: {fileID: 2558410840527274024}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +510,7 @@ GameObject:
   - component: {fileID: 4737097071917642}
   - component: {fileID: 5232039656685732188}
   - component: {fileID: 3540841484705826344}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +586,7 @@ GameObject:
   - component: {fileID: 6605036351865233689}
   - component: {fileID: 1119992596289632739}
   - component: {fileID: 6137333676672413534}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

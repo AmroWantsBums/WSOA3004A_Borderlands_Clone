@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6067603547501186357}
   - component: {fileID: 1683761333549767691}
   - component: {fileID: 1648190693712486208}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3679856808773629382}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: -4351567091484892434}
   - component: {fileID: 7368291900625791335}
   - component: {fileID: 6934219844758083303}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SuperBadass_Incendiary_Enemy
-  m_TagString: Untagged
+  m_TagString: Incendiary_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   healthPoints: 450
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 2
   spawnLootScript: {fileID: 0}
@@ -279,7 +280,7 @@ GameObject:
   - component: {fileID: 3387634072838440833}
   - component: {fileID: 6816362970916140429}
   - component: {fileID: 4398066905947035100}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +382,7 @@ GameObject:
   - component: {fileID: 4467604260848906835}
   - component: {fileID: 1655621647728776257}
   - component: {fileID: 3489198203389457100}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 634685007575975461}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +495,7 @@ GameObject:
   - component: {fileID: 5531102191494526855}
   - component: {fileID: 3895383255640528732}
   - component: {fileID: 214576466304312640}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379431338605293935}
   - component: {fileID: 4111925415269471726}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}

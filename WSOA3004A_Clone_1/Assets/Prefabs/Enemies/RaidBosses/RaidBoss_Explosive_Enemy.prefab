@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4834115771325736095}
   - component: {fileID: 3695802795808879886}
   - component: {fileID: 3967244446614159503}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3497802743176297971}
   - component: {fileID: 889144001053835855}
   - component: {fileID: 8374000231237627620}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7309882166358848104}
   - component: {fileID: 7253141560613380145}
   - component: {fileID: 8832182921600806905}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,9 +268,9 @@ GameObject:
   - component: {fileID: 8972104023947867594}
   - component: {fileID: -1127409738496231509}
   - component: {fileID: -2149870835799841120}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RaidBoss_Explosive_Enemy
-  m_TagString: Untagged
+  m_TagString: Explosive_Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,6 +358,7 @@ MonoBehaviour:
   healthPoints: 500
   enemyVulnerable: 0
   criticalHitTxt: {fileID: 0}
+  resistanceHitTxt: {fileID: 0}
   Canvas: {fileID: 0}
   enemy: 4
   spawnLootScript: {fileID: 0}
@@ -419,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6051748369567286890}
   - component: {fileID: 6390490185067967501}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: enemyHealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2981602711382492198}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244451054883904837}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +586,7 @@ GameObject:
   - component: {fileID: 3005317989847825742}
   - component: {fileID: 6685955221962020526}
   - component: {fileID: 5039213692803636218}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
