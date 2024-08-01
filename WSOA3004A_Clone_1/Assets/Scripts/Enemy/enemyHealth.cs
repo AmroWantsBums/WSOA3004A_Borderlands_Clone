@@ -37,7 +37,7 @@ public class enemyHealth : MonoBehaviour
     void Update()
     {
         Slider[] children = GetComponentsInChildren<Slider>();
-        
+
         for (int i = 0; i < children.Length; i++)
         {
             if (children[i].name == "enemyHealthPoints")
@@ -46,11 +46,12 @@ public class enemyHealth : MonoBehaviour
             }
         }
 
+        UpdateSlider();
+
         if (healthPoints <= 0)
         {
             Die();
         }
-        UpdateSlider();
     }
 
     public void takeDamage(float damageTaken)
@@ -63,7 +64,7 @@ public class enemyHealth : MonoBehaviour
         }
         else
         {
-            healthPoints = healthPoints - damageTaken;
+            healthPoints -= damageTaken;
         }
     }
 

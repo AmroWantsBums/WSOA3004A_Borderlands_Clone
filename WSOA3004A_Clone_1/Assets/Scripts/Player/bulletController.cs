@@ -11,15 +11,8 @@ public class bulletController : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player");
-        Transform[] playerChildren = Player.GetComponentsInChildren<Transform>();
-        for (int j = 0; j < playerChildren.Length; j++)
-        {
-            if (playerChildren[j].gameObject.layer == 14)
-            {
-                weaponController = playerChildren[j].gameObject.GetComponent<weaponController>();
-            }
-        }
-            int playerLayer = LayerMask.NameToLayer("Player");
+        weaponController = Player.GetComponent<weaponController>();
+        int playerLayer = LayerMask.NameToLayer("Player");
         int bulletLayer = LayerMask.NameToLayer("Bullet");
 
         Physics2D.IgnoreLayerCollision(playerLayer, bulletLayer, true);
@@ -38,7 +31,7 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Explosive_Enemy"))
             {   
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(weaponController.weaponDamage * 0.3f);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
                 enemyHealth.ShowResistanceTxt();
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
@@ -57,7 +50,7 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Slag_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(weaponController.weaponDamage * 0.3f);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
                 enemyHealth.ShowResistanceTxt();
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
@@ -78,7 +71,7 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Incendiary_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(weaponController.weaponDamage * 0.3f);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
                 enemyHealth.ShowResistanceTxt();
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);

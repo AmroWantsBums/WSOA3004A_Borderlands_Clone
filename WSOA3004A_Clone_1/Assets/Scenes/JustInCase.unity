@@ -1333,8 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 920022088}
   - component: {fileID: 920022089}
-  - component: {fileID: 920022090}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Gun
   m_TagString: Explosive_Weapon
   m_Icon: {fileID: 0}
@@ -1408,31 +1407,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &920022090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920022087}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4900cb77e0f536546955e6b482267c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  Bullets:
-  - {fileID: 5696398689937213907, guid: ee453bb043b30b1499d086f7b8e6e08a, type: 3}
-  - {fileID: 3563273538778271927, guid: 784e265f66d7721409d63cf9402e87ca, type: 3}
-  - {fileID: 4910378822106941659, guid: ab9aca396f745864b85a421968cd1f99, type: 3}
-  shootDirection: {x: 0, y: 0}
-  bulletSpeed: 5.08
-  Ammo: 0
-  weaponDamage: 0
-  activeWeaponSlot: 1
-  WeaponSlots:
-  - {fileID: 1066888949}
-  - {fileID: 1219427713}
 --- !u!1 &930899860
 GameObject:
   m_ObjectHideFlags: 0
