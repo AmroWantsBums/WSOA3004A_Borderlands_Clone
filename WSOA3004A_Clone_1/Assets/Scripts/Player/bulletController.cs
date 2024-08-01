@@ -6,11 +6,20 @@ public class bulletController : MonoBehaviour
 {
     public GameObject sparkParticleEffect;
     public weaponController weaponController;
+    private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        weaponController = GameObject.Find("Gun").GetComponent<weaponController>();
-        int playerLayer = LayerMask.NameToLayer("Player");
+        Player = GameObject.Find("Player");
+        Transform[] playerChildren = Player.GetComponentsInChildren<Transform>();
+        for (int j = 0; j < playerChildren.Length; j++)
+        {
+            if (playerChildren[j].gameObject.layer == 14)
+            {
+                weaponController = playerChildren[j].gameObject.GetComponent<weaponController>();
+            }
+        }
+            int playerLayer = LayerMask.NameToLayer("Player");
         int bulletLayer = LayerMask.NameToLayer("Bullet");
 
         Physics2D.IgnoreLayerCollision(playerLayer, bulletLayer, true);
