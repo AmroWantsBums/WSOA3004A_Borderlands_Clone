@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8550523089137088302
 MonoBehaviour:
@@ -44,17 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d066de4b05c1a64badf6d83d50a2ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwitchEnemy:
-    selectEnemyType_SL: 0
-    itemPools: []
-    poolGunsAdGear: []
-    rarityPools: []
-    weaponTypePools: []
-    manufactoresPools: []
-    produceRarity: 0
-    produceWeaponType: 0
-    produceManufacture: 0
-  SwitchTest: 1
+  playerHealth: {fileID: 0}
+  weaponControllerScript: {fileID: 0}
+  weaponGenerator: {fileID: 0}
   regularEnemy:
     selectEnemyType_SL: 0
     itemPools:
@@ -258,11 +250,7 @@ MonoBehaviour:
   dropOdd_EridiumStick: 15
   dropOdd_Eridiumbar: 5
   dropOdd_HealthRan: 20
-  dropOdd_HealthNeed: 0
-  dropOdd_HealthEmergency: -1
   dropOdd_AmmoRan: 20
-  dropOdd_AmmoEmergency: -1
-  dropOdd_AmmoNeed: 0
   bA_SGaG: 2
   bA_SM: 2
   bA_SES: 2
@@ -302,48 +290,26 @@ MonoBehaviour:
   StandardWeight: 12.5
   PistolBrands:
   - Weight: 0
-    selectManufacturer: 0
-  - Weight: 0
     selectManufacturer: 1
-  - Weight: 0
-    selectManufacturer: 2
-  - Weight: 0
-    selectManufacturer: 7
   - Weight: 0
     selectManufacturer: 6
   - Weight: 0
-    selectManufacturer: 5
-  - Weight: 0
     selectManufacturer: 4
-  - Weight: 0
-    selectManufacturer: 3
   ARBrands:
   - Weight: 0
-    selectManufacturer: 0
+    selectManufacturer: 1
   - Weight: 0
-    selectManufacturer: 2
+    selectManufacturer: 4
+  - Weight: 0
+    selectManufacturer: 6
+  SMGBrands:
+  - Weight: 0
+    selectManufacturer: 1
   - Weight: 0
     selectManufacturer: 6
   - Weight: 0
     selectManufacturer: 4
-  - Weight: 0
-    selectManufacturer: 3
-  SMGBrands:
-  - Weight: 0
-    selectManufacturer: 0
-  - Weight: 0
-    selectManufacturer: 5
-  - Weight: 0
-    selectManufacturer: 1
-  - Weight: 0
-    selectManufacturer: 7
-  - Weight: 0
-    selectManufacturer: 2
   ShotGunBrands:
-  - Weight: 0
-    selectManufacturer: 0
-  - Weight: 0
-    selectManufacturer: 7
   - Weight: 0
     selectManufacturer: 6
   - Weight: 0
@@ -352,26 +318,18 @@ MonoBehaviour:
     selectManufacturer: 4
   SniperBrands:
   - Weight: 0
-    selectManufacturer: 2
-  - Weight: 0
-    selectManufacturer: 7
-  - Weight: 0
-    selectManufacturer: 6
-  - Weight: 0
-    selectManufacturer: 5
-  - Weight: 0
-    selectManufacturer: 3
-  LuancherBrands:
-  - Weight: 0
-    selectManufacturer: 0
-  - Weight: 0
-    selectManufacturer: 5
-  - Weight: 0
     selectManufacturer: 1
   - Weight: 0
     selectManufacturer: 4
   - Weight: 0
-    selectManufacturer: 3
+    selectManufacturer: 6
+  LuancherBrands:
+  - Weight: 0
+    selectManufacturer: 6
+  - Weight: 0
+    selectManufacturer: 1
+  - Weight: 0
+    selectManufacturer: 4
   GunsPrefab: {fileID: 4938471066158276526, guid: 3dd6d71135b57da4f929caed74708524, type: 3}
   ShieldPrefab: {fileID: 5947262547858797980, guid: 3bffdb1a3b272f5489274b353c3ce8fa, type: 3}
   RelicPrefab: {fileID: 5271117864452374298, guid: b8dbb17bc80391b499c56e3ddb6170d9, type: 3}
