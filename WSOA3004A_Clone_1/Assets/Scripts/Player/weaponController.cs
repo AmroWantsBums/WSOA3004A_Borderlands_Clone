@@ -15,7 +15,7 @@ public class weaponController : MonoBehaviour
     private TextMeshProUGUI ammoText;
     public int weaponDamage;
     public int activeWeaponSlot = 1;
-    public GameObject[] WeaponSlot;
+    public GameObject[] WeaponSlots;
     
     // Start is called before the first frame update
     void Start()
@@ -105,15 +105,19 @@ public class weaponController : MonoBehaviour
 
     public void pickupWeapon(GameObject pickedUpWeapon, int weaponSlot)
     {
-        GameObject[] children = WeaponSlot[weaponSlot].GetComponentsInChildren<GameObject>();
-        for (int i = 0; i < children.Length; i++)
+        Transform[] children = WeaponSlots[(weaponSlot - 1)].GetComponentsInChildren<Transform>();
+        if (children.Length > 0)
         {
-            if (children[i].name != "WeaponOneImage" || children[i].name != "WeaponTwoImage")
+            for (int i = 0; i < children.Length; i++)
             {
-                Destroy(children[i]);
+                if (children[i].gameObject.name != "WeaponOneImage" && children[i].gameObject.name != "WeaponTwoImage")
+                {
+                    Destroy(children[i].gameObject);
+                }
             }
         }
         GameObject weaponObject = pickedUpWeapon;
-        Instantiate(weaponObject, WeaponSlot[weaponSlot].transform.position, Quaternion.identity, WeaponSlot[weaponSlot].transform);
+        GameObject WeaponIcon = Instantiate(weaponObject, WeaponSlots[(weaponSlot - 1)].transform.position, Quaternion.identity, WeaponSlots[(weaponSlot - 1)].transform);
+        WeaponIcon.transform.localScale = new Vector2(90.0f, 90.0f);
     }
 }

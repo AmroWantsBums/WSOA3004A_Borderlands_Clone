@@ -24,7 +24,7 @@ public class weaponPickup : MonoBehaviour
         {
             if (Input.GetKeyDown("f"))
             {
-                weaponController.pickupWeapon(pickedUpWeapon, 1);
+                weaponController.pickupWeapon(pickedUpWeapon, weaponController.activeWeaponSlot);
             }
         }
     }
