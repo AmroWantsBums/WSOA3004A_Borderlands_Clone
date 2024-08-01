@@ -76,7 +76,7 @@ public class WeaponGenerator : WeaponBody
     {
         if (Input.GetKeyDown(KeyCode.Space)){
            Debug.Log(wtype+ " "+ manu);
-            GenerateWeapon(2,wtype, manu); // change to be different for each weapon must change, eg GeneratePistol
+            GenerateWeapon(4,wtype, manu); // change to be different for each weapon must change, eg GeneratePistol
             
         }
 

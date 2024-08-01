@@ -282,7 +282,7 @@ MonoBehaviour:
   - stat: 5
     minStatValue: 1
     maxStatValue: 1
-  rarityLevel: 2
+  rarityLevel: 0
   selectWPN: 0
   selectMF: 6
   barrelSocket: {fileID: 3448508417105224711}

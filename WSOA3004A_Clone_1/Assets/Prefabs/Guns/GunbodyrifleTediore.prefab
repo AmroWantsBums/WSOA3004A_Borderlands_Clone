@@ -222,6 +222,8 @@ MonoBehaviour:
     minStatValue: 1
     maxStatValue: 1
   rarityLevel: 0
+  selectWPN: 1
+  selectMF: 1
   barrelSocket: {fileID: 2333138756244778162}
   scopeSocket: {fileID: 4568654706079634136}
   handleSocket: {fileID: 1036188777232622892}
@@ -241,6 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawStats: []
   rarityLevel: 0
+  selectWPN: 0
+  selectMF: 0
 --- !u!1 &1934783965096248721
 GameObject:
   m_ObjectHideFlags: 0
