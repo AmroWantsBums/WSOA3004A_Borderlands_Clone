@@ -60,8 +60,9 @@ public class WeaponGenerator : WeaponBody
     public SpawnLoot.EnemyType.RarityPool.AvailableRarities rarity;
     public SpawnLoot.EnemyType.WeaponTypePool.WeaponType wtype;
     public SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus manu;
-    
 
+    [SerializeField]
+    private SpawnLoot spawnLootScript;
 
 
 
@@ -76,7 +77,7 @@ public class WeaponGenerator : WeaponBody
     {
         if (Input.GetKeyDown(KeyCode.Space)){
            Debug.Log(wtype+ " "+ manu);
-            GenerateWeapon(2,wtype, manu); // change to be different for each weapon must change, eg GeneratePistol
+           //GenerateWeapon(2,wtype, manu); // change to be different for each weapon must change, eg GeneratePistol
             
         }
 
@@ -105,7 +106,7 @@ public class WeaponGenerator : WeaponBody
         }
     }
 
-    void GenerateWeapon(int x, SpawnLoot.EnemyType.WeaponTypePool.WeaponType thisWPN, SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus thisMF){// random 
+    public void GenerateWeapon(int x, SpawnLoot.EnemyType.WeaponTypePool.WeaponType thisWPN, SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus thisMF, GameObject Pos_EnemyDead){// random 
 
         List<GameObject> SelectFromPoolBody = new List<GameObject>();
         List<GameObject> SelectFromPoolBarrel = new List<GameObject>();
@@ -176,7 +177,7 @@ public class WeaponGenerator : WeaponBody
         WeaponPart magazine = SpawnWeaponPart(SelectFromPoolMagazine,wpnBody.magazineSocket);
         //get random body from list
         //instantiate it
-        wpnBody.Initialize(barrel, scope, stock, handle, magazine);
+        spawnLootScript.PositionGun(insBody, Pos_EnemyDead);
 
        
     }

@@ -7,6 +7,10 @@ public class SpawnLoot : MonoBehaviour
 {
     [SerializeField]
     private playerHealthController playerHealth;
+    [SerializeField]
+    private weaponController weaponControllerScript;
+    [SerializeField]
+    private WeaponGenerator weaponGenerator;
     
    [Header("Enemy Possible Loot Drops")]
     public EnemyType regularEnemy, badAssEnemy, chubbyEnemy;
@@ -721,6 +725,12 @@ public class SpawnLoot : MonoBehaviour
             CreateLoot(HealthPrefab, enemyDied_DLTS, typeKilled);
         }
 
+
+        //float plA = weaponControllerScript.Ammo * 0.2f;
+        //if (weaponControllerScript.Ammo < plA)
+        //{
+        //    CreateLoot(AmmoPrefab, enemyDied_DLTS, typeKilled);
+        //}
     }
 
     private void DetermineGunsAndGear(EnemyType Killed, GameObject enemyDied_DGaG) // DGaG = DetermineGunsAndGear
@@ -910,8 +920,9 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
-                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                        //CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                       //GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
                       //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
@@ -964,8 +975,9 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
-                        GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                      //  CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                      //  GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
                       //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
@@ -1017,7 +1029,8 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                       // CreateLoot(GunsPrefab, enemyDied_DMf, killed);
                         // enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
@@ -1070,9 +1083,9 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
-                       
-                      //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                        //CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                        //  enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
@@ -1123,7 +1136,8 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                        // CreateLoot(GunsPrefab, enemyDied_DMf, killed);
                         // enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
                         Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
@@ -1175,9 +1189,9 @@ public class SpawnLoot : MonoBehaviour
                                 killed.produceManufacture = EnemyType.ManufactoresPool.AllManufacterus.Hyperion;
                                 break;
                         }
-                        CreateLoot(GunsPrefab, enemyDied_DMf, killed);
-                        //enemyDied_DMf.GetComponent<TestingStuff>().DropLoot.Add(GunsPrefab);
-                        Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
+                        weaponGenerator.GenerateWeapon((int)killed.produceRarity, killed.produceWeaponType, killed.produceManufacture, enemyDied_DMf);
+                        // CreateLoot(GunsPrefab, enemyDied_DMf, killed);
+                       // Debug.Log(killed.produceRarity + " " + killed.produceManufacture + " " + killed.produceWeaponType);
                         return;
                     }
                 }
@@ -1207,12 +1221,19 @@ public class SpawnLoot : MonoBehaviour
         Loot = Instantiate(obj, enemyDied_CL.transform.position, Quaternion.identity);
         Lootrb = Loot.GetComponent<Rigidbody2D>();
         Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
-       
-        if (obj == GunsPrefab)
-        {
-            GunsPrefab.GetComponent<ShowRarityOnSpawn>().SetColour(killed.produceRarity);
-        }
         
     }
     
+
+    public void PositionGun(GameObject Gun, GameObject EnemyDied)
+    {
+        Gun.transform.position = EnemyDied.transform.position;
+        Rigidbody2D Lootrb;
+        Vector2 direction;
+        float force;
+        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+        force = (float)UnityEngine.Random.Range(-minF, maxF);
+        Lootrb = Gun.GetComponent<Rigidbody2D>();
+        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+    }
 }
