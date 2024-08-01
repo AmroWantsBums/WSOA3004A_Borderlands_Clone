@@ -19,7 +19,8 @@ public class CurrencyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GainCurrency(0);
+        GainedEridium(0);
     }
 
     // Update is called once per frame
@@ -32,13 +33,13 @@ public class CurrencyController : MonoBehaviour
     {
         CurrentMoney = CurrentMoney + Gained;
 
-        MoneyText.text = $"{CurrentMoney}";
+        MoneyText.text ="Money: " + $"{CurrentMoney}";
     }
 
     public void GainedEridium(int Gained)
     {
         CurrentEridium = CurrentEridium + Gained;
 
-        EridiumText.text = $"{CurrentEridium}";
+        EridiumText.text ="Eridium: " + $"{CurrentEridium}";
     }
 }

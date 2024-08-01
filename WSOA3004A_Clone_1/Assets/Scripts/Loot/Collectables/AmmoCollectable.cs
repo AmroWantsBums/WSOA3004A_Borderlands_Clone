@@ -14,6 +14,7 @@ public class AmmoCollectable : MonoBehaviour
         {
             weaponController WCScript = collision.gameObject.GetComponent<weaponController>();
             WCScript.Ammo = WCScript.Ammo + RestoreAmmo;
+            Destroy(gameObject);
         }
     }
 }
