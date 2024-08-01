@@ -59,6 +59,27 @@ public class weaponController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             activeWeaponSlot = 2;
+            Transform[] children = WeaponSlots[1].GetComponentsInChildren<Transform>();
+            if (children.Length > 0)
+            {
+                Transform[] playerChildren = Player.GetComponentsInChildren<Transform>();
+                for (int j = 0; j < playerChildren.Length; j++)
+                {
+                    if (playerChildren[j].gameObject.name != "Player" && playerChildren[j].gameObject.name != "TriggerCollider")
+                    {
+                        Destroy(playerChildren[j].gameObject);
+                    }
+                }
+
+                for (int i = 0; i < children.Length; i++)
+                {
+                    if (children[i].gameObject.name != "WeaponTwoImage")
+                    {
+                        Weapon = Instantiate(children[i].gameObject, Player.transform.position, Quaternion.identity, Player.transform);
+                        Weapon.transform.localScale = new Vector2(0.19f, 0.62f);
+                    }
+                }
+            }
         }
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -66,8 +87,8 @@ public class weaponController : MonoBehaviour
         {
             Vector2 direction = mousePos - (Vector2)Weapon.transform.position;
             Weapon.transform.up = direction;
+            shootDirection = (mousePos - (Vector2)Weapon.transform.position).normalized;
         }
-        shootDirection = (mousePos - (Vector2)Weapon.transform.position).normalized;
         if (Input.GetMouseButton(0) && canFire)
         {
             if (Weapon.CompareTag("Explosive_Weapon"))
