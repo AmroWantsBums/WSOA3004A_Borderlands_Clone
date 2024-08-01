@@ -14,6 +14,9 @@ public class weaponController : MonoBehaviour
     public int Ammo;
     private TextMeshProUGUI ammoText;
     public int weaponDamage;
+    public int activeWeaponSlot = 1;
+    public GameObject[] WeaponSlot;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,15 @@ public class weaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            activeWeaponSlot = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            activeWeaponSlot = 2;
+        }
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - (Vector2)Weapon.transform.position;
         Weapon.transform.up = direction;
@@ -89,5 +101,19 @@ public class weaponController : MonoBehaviour
         yield return new WaitForSeconds(reloadSeconds);
         Ammo = 20;
         canFire = true;
+    }
+
+    public void pickupWeapon(GameObject pickedUpWeapon, int weaponSlot)
+    {
+        GameObject[] children = WeaponSlot[weaponSlot].GetComponentsInChildren<GameObject>();
+        for (int i = 0; i < children.Length; i++)
+        {
+            if (children[i].name != "WeaponOneImage" || children[i].name != "WeaponTwoImage")
+            {
+                Destroy(children[i]);
+            }
+        }
+        GameObject weaponObject = pickedUpWeapon;
+        Instantiate(weaponObject, WeaponSlot[weaponSlot].transform.position, Quaternion.identity, WeaponSlot[weaponSlot].transform);
     }
 }
