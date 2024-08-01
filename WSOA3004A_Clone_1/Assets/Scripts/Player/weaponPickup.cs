@@ -14,7 +14,7 @@ public class weaponPickup : MonoBehaviour
     void Start()
     {
         Canvas = GameObject.Find("Canvas");
-        weaponController = GameObject.Find("Gun").GetComponent<weaponController>();
+        weaponController = GameObject.Find("Player").GetComponent<weaponController>();
     }
 
     // Update is called once per frame

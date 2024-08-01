@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f5f08c715d4f847a9be9a27d066bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestoreAmmo: 0.5
+  RestoreAmmo: 20
 --- !u!61 &6291375100878088805
 BoxCollider2D:
   m_ObjectHideFlags: 0

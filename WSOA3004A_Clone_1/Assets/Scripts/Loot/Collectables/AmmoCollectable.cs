@@ -6,14 +6,14 @@ public class AmmoCollectable : MonoBehaviour
 {
 
     [SerializeField]
-    private float RestoreAmmo = 0.5f;
+    private int RestoreAmmo = 20;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            weaponController WCScript = collision.transform.GetChild(0).gameObject.GetComponent<weaponController>();
-           // WCScript.Ammo = WCScript.Ammo + (WCScript.Ammo * RestoreAmmo);
+            weaponController WCScript = collision.gameObject.GetComponent<weaponController>();
+            WCScript.Ammo = WCScript.Ammo + RestoreAmmo;
         }
     }
 }

@@ -48,10 +48,7 @@ public class enemyHealth : MonoBehaviour
 
         UpdateSlider();
 
-        if (healthPoints <= 0)
-        {
-            Die();
-        }
+        
     }
 
     public void takeDamage(float damageTaken)
@@ -65,7 +62,14 @@ public class enemyHealth : MonoBehaviour
         else
         {
             healthPoints -= damageTaken;
+
+            if (healthPoints <= 0)
+            {
+                Die();
+            }
         }
+
+        
     }
 
     public void ShowResistanceTxt()

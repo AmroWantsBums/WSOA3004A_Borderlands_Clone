@@ -134,11 +134,11 @@ public class SpawnLoot : MonoBehaviour
 
             public enum AvailableRarities
             {
-                Common,
-                Uncommon,
-                Rare,
-                VeryRare,
-                Legendary
+                Common = 0,
+                Uncommon = 1,
+                Rare = 2,
+                VeryRare = 3,
+                Legendary = 4
             }
         }
        
@@ -726,11 +726,11 @@ public class SpawnLoot : MonoBehaviour
         }
 
 
-        //float plA = weaponControllerScript.Ammo * 0.2f;
-        //if (weaponControllerScript.Ammo < plA)
-        //{
-        //    CreateLoot(AmmoPrefab, enemyDied_DLTS, typeKilled);
-        //}
+        float plA = weaponControllerScript.Ammo * 0.2f;
+        if (weaponControllerScript.Ammo < plA)
+        {
+            CreateLoot(AmmoPrefab, enemyDied_DLTS, typeKilled);
+        }
     }
 
     private void DetermineGunsAndGear(EnemyType Killed, GameObject enemyDied_DGaG) // DGaG = DetermineGunsAndGear
@@ -1229,12 +1229,12 @@ public class SpawnLoot : MonoBehaviour
     {
         Debug.Log("Fok my" + Gun);
         Gun.transform.position = EnemyDied.transform.position;
-        Rigidbody2D Lootrb;
-        Vector2 direction;
-        float force;
-        direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
-        force = (float)UnityEngine.Random.Range(-minF, maxF);
-        Lootrb = Gun.GetComponent<Rigidbody2D>();
-        Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+        //Rigidbody2D Lootrb;
+        //Vector2 direction;
+        //float force;
+        //direction = new Vector2((float)UnityEngine.Random.Range(min, max), (float)UnityEngine.Random.Range(min, max));
+        //force = (float)UnityEngine.Random.Range(-minF, maxF);
+        //Lootrb = Gun.GetComponent<Rigidbody2D>();
+        //Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 }
