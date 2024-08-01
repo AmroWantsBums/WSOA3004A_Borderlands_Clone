@@ -6,9 +6,11 @@ using TMPro;
 
 public class enemyHealth : MonoBehaviour
 {
-    public float healthPoints = 200f;
+    public float healthPoints;
+    private float beginningHealth;
     public bool enemyVulnerable = false;
     public GameObject criticalHitTxt;
+    public GameObject resistanceHitTxt;
     public GameObject Canvas;
     private Slider healthBar;
     private GameObject Enemy;
@@ -27,13 +29,15 @@ public class enemyHealth : MonoBehaviour
         Enemy = gameObject;
         Canvas = GameObject.Find("Canvas");
         criticalHitTxt = Resources.Load<GameObject>("Prefabs/CriticalHitTxt");
+        resistanceHitTxt = Resources.Load<GameObject>("Prefabs/ResistanceHitTxt");
+        beginningHealth = healthPoints;
     }
 
     // Update is called once per frame
     void Update()
     {
         Slider[] children = GetComponentsInChildren<Slider>();
-        
+
         for (int i = 0; i < children.Length; i++)
         {
             if (children[i].name == "enemyHealthPoints")
@@ -42,11 +46,12 @@ public class enemyHealth : MonoBehaviour
             }
         }
 
+        UpdateSlider();
+
         if (healthPoints <= 0)
         {
             Die();
         }
-        UpdateSlider();
     }
 
     public void takeDamage(float damageTaken)
@@ -59,8 +64,14 @@ public class enemyHealth : MonoBehaviour
         }
         else
         {
-            healthPoints = healthPoints - damageTaken;
+            healthPoints -= damageTaken;
         }
+    }
+
+    public void ShowResistanceTxt()
+    {
+        Vector2 SpawnPosition = new Vector2(transform.position.x, transform.position.y + 0.8f);
+        Instantiate(resistanceHitTxt, SpawnPosition, Quaternion.identity, Canvas.transform);
     }
 
     void Die()
@@ -78,7 +89,7 @@ public class enemyHealth : MonoBehaviour
 
     void UpdateSlider()
     {
-        float newHealthPoints = healthPoints / 200;
+        float newHealthPoints = healthPoints / beginningHealth;
         healthBar.value = newHealthPoints;
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(Enemy.transform.position + Vector3.up * 1.001f); 
         healthBar.transform.position = screenPosition;

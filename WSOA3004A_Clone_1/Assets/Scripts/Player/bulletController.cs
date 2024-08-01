@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class bulletController : MonoBehaviour
 {
-    public GameObject sparkParticleEffect;  
+    public GameObject sparkParticleEffect;
+    public weaponController weaponController;
+    private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Player");
+        weaponController = Player.GetComponent<weaponController>();
         int playerLayer = LayerMask.NameToLayer("Player");
         int bulletLayer = LayerMask.NameToLayer("Bullet");
 
@@ -27,14 +31,15 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Explosive_Enemy"))
             {   
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(100);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
+                enemyHealth.ShowResistanceTxt();
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
             else
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(30);
+                enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
@@ -45,7 +50,8 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Slag_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(100);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
+                enemyHealth.ShowResistanceTxt();
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 enemyHealth.enemyVulnerable = true;
@@ -53,7 +59,7 @@ public class bulletController : MonoBehaviour
             else
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(30);
+                enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 enemyHealth.enemyVulnerable = true;
@@ -65,14 +71,15 @@ public class bulletController : MonoBehaviour
             if (col.gameObject.CompareTag("Incendiary_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(100);
+                enemyHealth.takeDamage((weaponController.weaponDamage * 0.3f));
+                enemyHealth.ShowResistanceTxt();
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
             else
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
-                enemyHealth.takeDamage(30);
+                enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }

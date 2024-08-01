@@ -21,15 +21,15 @@ TagManager:
   - 
   - Water
   - UI
-  - BaseEnemy
+  - ChumpEnemy
   - Player
   - Bullet
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ChubbyEnemy
+  - BadassEnemy
+  - SuperBadassEnemy
+  - RaidBossEnemy
+  - NamedBossEnemy
+  - Weapon
   - 
   - 
   - 
