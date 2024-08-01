@@ -157,3 +157,5 @@ MonoBehaviour:
     minStatValue: 6
     maxStatValue: 9
   rarityLevel: 2
+  selectWPN: 0
+  selectMF: 6

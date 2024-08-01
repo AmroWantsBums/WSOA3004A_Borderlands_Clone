@@ -50,6 +50,8 @@ MonoBehaviour:
     minStatValue: 3
     maxStatValue: 8
   rarityLevel: 3
+  selectWPN: 0
+  selectMF: 4
 --- !u!1 &6367783026253217735
 GameObject:
   m_ObjectHideFlags: 0

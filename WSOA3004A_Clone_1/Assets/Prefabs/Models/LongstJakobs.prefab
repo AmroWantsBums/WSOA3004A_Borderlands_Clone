@@ -49,7 +49,7 @@ MonoBehaviour:
   - stat: 3
     minStatValue: 8
     maxStatValue: 10
-  rarityLevel: 2
+  rarityLevel: 3
   selectWPN: 0
   selectMF: 6
 --- !u!1 &6367783026253217735
