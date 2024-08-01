@@ -47,6 +47,9 @@ public class WeaponPart : MonoBehaviour
 
     public RarityLevel rarityLevel;
 
+    public SpawnLoot.EnemyType.WeaponTypePool.WeaponType selectWPN;
+    public SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus selectMF;
+
 
     private void Awake()
     {

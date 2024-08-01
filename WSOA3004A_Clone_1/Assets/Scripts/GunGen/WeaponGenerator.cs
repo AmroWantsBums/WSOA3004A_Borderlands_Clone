@@ -57,9 +57,10 @@ public class WeaponGenerator : WeaponBody
 
 
 
-
-
-
+    public SpawnLoot.EnemyType.RarityPool.AvailableRarities rarity;
+    public SpawnLoot.EnemyType.WeaponTypePool.WeaponType wtype;
+    public SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus manu;
+    
 
 
 
@@ -74,7 +75,9 @@ public class WeaponGenerator : WeaponBody
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-            GenerateWeapon(); // change to be different for each weapon must change, eg GeneratePistol
+           Debug.Log(wtype+ " "+ manu);
+            GenerateWeapon(2,wtype, manu); // change to be different for each weapon must change, eg GeneratePistol
+            
         }
 
         if (Input.GetKeyDown(KeyCode.P)){
@@ -102,28 +105,80 @@ public class WeaponGenerator : WeaponBody
         }
     }
 
-    void GenerateWeapon(){// random 
+    void GenerateWeapon(int x, SpawnLoot.EnemyType.WeaponTypePool.WeaponType thisWPN, SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus thisMF){// random 
 
-        
+        List<GameObject> SelectFromPoolBody = new List<GameObject>();
+        List<GameObject> SelectFromPoolBarrel = new List<GameObject>();
+        List<GameObject> SelectFromPoolScope = new List<GameObject>();
+        List<GameObject> SelectFromPoolStock = new List<GameObject>();
+        List<GameObject> SelectFromPoolHandle = new List<GameObject>();
+        List<GameObject> SelectFromPoolMagazine = new List<GameObject>();
+         
 
-        GameObject randomBody = GetRandomPart(bodyParts);
+        for (int i = 0; i < bodyParts.Count; i++){
+            Debug.Log("hello");
+            if ((int)bodyParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            bodyParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            bodyParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+               
+                SelectFromPoolBody.Add(bodyParts[i]);
+                
+            }
+        }
+        for (int i = 0; i < barrelParts.Count; i++){
+            if ((int)barrelParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            barrelParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            barrelParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+                SelectFromPoolBarrel.Add(barrelParts[i]);
+            }
+        }
+        for (int i = 0; i < scopeParts.Count; i++){
+            if ((int)scopeParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            scopeParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            scopeParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+                SelectFromPoolScope.Add(scopeParts[i]);
+            }
+        }
+        for (int i = 0; i < stockParts.Count; i++){
+            if ((int)stockParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            stockParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            stockParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+                SelectFromPoolStock.Add(stockParts[i]);
+            }
+        }
+        for (int i = 0; i < handleParts.Count; i++){
+            if ((int)handleParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            handleParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            handleParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+                SelectFromPoolHandle.Add(handleParts[i]);
+            }
+        }
+        for (int i = 0; i < magazineParts.Count; i++){
+            if ((int)magazineParts[i].GetComponent<WeaponPart>().rarityLevel == x &&
+            magazineParts[i].GetComponent<WeaponPart>().selectWPN == thisWPN &&
+            magazineParts[i].GetComponent<WeaponPart>().selectMF == thisMF){
+                SelectFromPoolMagazine.Add(magazineParts[i]);
+            }
+        }
+
+        GameObject randomBody = GetRandomPart(SelectFromPoolBody);
        GameObject insBody = Instantiate(randomBody, Vector3.zero, Quaternion.identity);
         WeaponBody wpnBody = insBody.GetComponent<WeaponBody>();
 
-        WeaponPart barrel = SpawnWeaponPart(barrelParts,wpnBody.barrelSocket);
+        WeaponPart barrel = SpawnWeaponPart(SelectFromPoolBarrel,wpnBody.barrelSocket);
 
-        WeaponPart stock = SpawnWeaponPart(stockParts,wpnBody.stockSocket);
+        WeaponPart stock = SpawnWeaponPart(SelectFromPoolStock,wpnBody.stockSocket);
 
-        WeaponPart handle = SpawnWeaponPart(handleParts,wpnBody.handleSocket);
+        WeaponPart handle = SpawnWeaponPart(SelectFromPoolHandle,wpnBody.handleSocket);
 
-        WeaponPart scope = SpawnWeaponPart(scopeParts,wpnBody.scopeSocket);
+        WeaponPart scope = SpawnWeaponPart(SelectFromPoolScope,wpnBody.scopeSocket);
 
-        WeaponPart magazine = SpawnWeaponPart(magazineParts,wpnBody.magazineSocket);
+        WeaponPart magazine = SpawnWeaponPart(SelectFromPoolMagazine,wpnBody.magazineSocket);
         //get random body from list
         //instantiate it
         wpnBody.Initialize(barrel, scope, stock, handle, magazine);
 
-        
+       
     }
 
 
@@ -303,7 +358,16 @@ public class WeaponGenerator : WeaponBody
 
 
     GameObject GetRandomPart(List<GameObject> partList){
-        int randomNumber = Random.Range(0, partList.Count);
+       int randomNumber = Random.Range(0, partList.Count);
+
+        
+        for (int i = 0; i < partList.Count; i++)
+        {
+            Debug.Log(partList[i].GetComponent<WeaponPart>().rarityLevel);
+            //Debug.Log($"Part: {part.name}, Rarity Level: {part.rarityLevel}");
+        }
+
+
         return partList[randomNumber];
     }
 

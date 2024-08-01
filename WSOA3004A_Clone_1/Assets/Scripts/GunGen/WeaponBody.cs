@@ -13,8 +13,8 @@ public class WeaponBody : WeaponPart
 
 
      
-    List<WeaponPart> weaponParts = new List<WeaponPart>();
-    Dictionary<WeaponStatType, float> weaponStats = new Dictionary<WeaponStatType, float>();
+    protected List<WeaponPart> weaponParts = new List<WeaponPart>();
+   protected Dictionary<WeaponStatType, float> weaponStats = new Dictionary<WeaponStatType, float>();
 
     int rawRarity = 0;
 
@@ -56,6 +56,11 @@ public class WeaponBody : WeaponPart
         rarityLevel = (RarityLevel)averageRarity;
 
         Debug.Log (rarityLevel);
+    }
+
+    public List<WeaponPart> GetWeaponParts()
+    {
+        return weaponParts;
     }
 
 }

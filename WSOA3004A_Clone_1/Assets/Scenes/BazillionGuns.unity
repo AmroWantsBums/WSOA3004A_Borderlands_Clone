@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawStats: []
   rarityLevel: 0
+  selectWPN: 0
+  selectMF: 0
   barrelSocket: {fileID: 0}
   scopeSocket: {fileID: 0}
   handleSocket: {fileID: 0}
@@ -489,6 +491,9 @@ MonoBehaviour:
   - {fileID: 5382729261351300946, guid: 2bac762f51fef0748813e3fe8bd4a450, type: 3}
   - {fileID: 5382729261351300946, guid: e07b46c4a4bd18c4a9d9d95f2b5ae432, type: 3}
   - {fileID: 5382729261351300946, guid: c393c0ae669d62c42b4a2fa7e7582525, type: 3}
+  rarity: 2
+  wtype: 0
+  manu: 6
 --- !u!4 &669945231
 Transform:
   m_ObjectHideFlags: 0
