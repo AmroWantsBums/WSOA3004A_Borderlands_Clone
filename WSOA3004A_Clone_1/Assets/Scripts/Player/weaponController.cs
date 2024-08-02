@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class weaponController : MonoBehaviour
+public class weaponController : WeaponPart
 {
     private GameObject Player;
     public GameObject Weapon;
@@ -100,45 +100,7 @@ public class weaponController : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && canFire)
             {
-                children = Weapon.GetComponentsInChildren<Transform>();
-
-                // Initialize default values
-                weaponDamage = 30;
-                fireRate = 0.4f;
-                ammoPerClip = 1;
-                accuracy = 0.2f;
-                reloadSpeed = 0.2f;
-
-                // Retrieve weapon stats
-                foreach (Transform child in children)
-                {
-                    WeaponPart part = child.GetComponent<WeaponPart>();
-
-                    if (part != null)
-                    {
-                        // Update stats based on tag
-                        if (child.CompareTag("DamageControl"))
-                        {
-                            weaponDamage = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Damage, weaponDamage));
-                        }
-                        else if (child.CompareTag("FireRateControl"))
-                        {
-                            fireRate = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.FireRate, fireRate);
-                        }
-                        else if (child.CompareTag("AmmoControl"))
-                        {
-                            ammoPerClip = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.AmmoPerClip, ammoPerClip));
-                        }
-                        else if (child.CompareTag("AccuracyControl"))
-                        {
-                            accuracy = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Accuracy, accuracy);
-                        }
-                        else if (child.CompareTag("ReloadSpeedControl"))
-                        {
-                            reloadSpeed = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.ReloadSpeed, reloadSpeed);
-                        }
-                    }
-                }
+                
 
                 // Determine bulletType based on weapon tag
                 if (Weapon.CompareTag("Explosive_Weapon"))
@@ -154,12 +116,8 @@ public class weaponController : MonoBehaviour
                     bulletType = Bullets[2];
                 }
 
-                // Call Fire method with updated parameters
-                if (bulletType != null)
-                {
-                    StartCoroutine(Fire(fireRate, 1, bulletType, accuracy, ammoPerClip, reloadSpeed));
-                    canFire = false;
-                }
+                StartCoroutine(Fire(fireRate, 1, bulletType, accuracy, ammoPerClip, reloadSpeed));
+                canFire = false;
 
                 ammoText.text = $"{Ammo}";
             }
@@ -238,10 +196,44 @@ public class weaponController : MonoBehaviour
 
             }
         }
-    }
+        children = Weapon.GetComponentsInChildren<Transform>();
 
-    void FetchWeaponStats(int Damage, int reloadSpeed, int Ammo, float fireRate, float Accuracy)
-    {
-        
+        // Initialize default values
+        weaponDamage = 30;
+        fireRate = 0.4f;
+        ammoPerClip = 1;
+        accuracy = 0.2f;
+        reloadSpeed = 0.2f;
+
+        // Retrieve weapon stats
+        foreach (Transform child in children)
+        {
+            WeaponPart part = child.GetComponent<WeaponPart>();
+
+            if (part != null)
+            {
+                // Update stats based on tag
+                if (child.CompareTag("DamageControl"))
+                {
+                    weaponDamage = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Damage, weaponDamage));
+                }
+                else if (child.CompareTag("FireRateControl"))
+                {
+                    fireRate = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.FireRate, fireRate);
+                }
+                else if (child.CompareTag("AmmoControl"))
+                {
+                    ammoPerClip = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.AmmoPerClip, ammoPerClip));
+                }
+                else if (child.CompareTag("AccuracyControl"))
+                {
+                    accuracy = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Accuracy, accuracy);
+                }
+                else if (child.CompareTag("ReloadSpeedControl"))
+                {
+                    reloadSpeed = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.ReloadSpeed, reloadSpeed);
+                }
+            }
+        }
     }
 }
