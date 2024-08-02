@@ -195,6 +195,7 @@ public class weaponController : MonoBehaviour
             yield return new WaitForSeconds(reloadSeconds);
             Ammo = numberOfBulletsInMag;
             canFire = true;
+            ammoText.text = $"{Ammo}";
         }
     }
     public void pickupWeapon(GameObject pickedUpWeapon, int weaponSlot)
@@ -220,6 +221,12 @@ public class weaponController : MonoBehaviour
         {
             if (playerChildren[j].gameObject.name != "Player" && playerChildren[j].gameObject.name != "TriggerCollider")
             {
+                if (playerChildren[j].gameObject.layer == 14)
+                {
+                    GameObject DroppedWeapon = Instantiate(playerChildren[j].gameObject, Player.transform.position, Quaternion.identity);
+                    DroppedWeapon.transform.localScale = new Vector2(1f, 0.5f);
+                    Destroy(playerChildren[j].gameObject);
+                }
                 Destroy(playerChildren[j].gameObject);
             }
         }
@@ -230,6 +237,7 @@ public class weaponController : MonoBehaviour
             if (childrenP[i].gameObject.name != "WeaponOneImage" && childrenP[i].gameObject.layer == 14)
             {
                 Vector3 spawnPosition = new Vector3(Player.transform.position.x, Player.transform.position.y, -1f);
+
                 Weapon = Instantiate(childrenP[i].gameObject, spawnPosition, Quaternion.identity, Player.transform);
                 Weapon.transform.localScale = new Vector2(1f, 0.2f);
             }
@@ -240,8 +248,50 @@ public class weaponController : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     void FetchWeaponStats(int Damage, int reloadSpeed, int Ammo, float fireRate, float Accuracy)
     {
         
+=======
+        // Initialize default values
+        weaponDamage = 30;
+        fireRate = 0.4f;
+        ammoPerClip = 1;
+        accuracy = 0.2f;
+        reloadSpeed = 0.2f;
+
+        // Retrieve weapon stats
+        foreach (Transform child in children)
+        {
+            WeaponPart part = child.GetComponent<WeaponPart>();
+
+            if (part != null)
+            {
+                // Update stats based on tag
+                if (child.CompareTag("DamageControl"))
+                {
+                    weaponDamage = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Damage, weaponDamage));
+                }
+                else if (child.CompareTag("FireRateControl"))
+                {
+                    fireRate = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.FireRate, fireRate);
+                }
+                else if (child.CompareTag("AmmoControl"))
+                {
+                    ammoPerClip = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.AmmoPerClip, ammoPerClip));
+                }
+                else if (child.CompareTag("AccuracyControl"))
+                {
+                    accuracy = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Accuracy, accuracy);
+                }
+                else if (child.CompareTag("ReloadSpeedControl"))
+                {
+                    reloadSpeed = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.ReloadSpeed, reloadSpeed);
+                }
+            }
+        }
+        Ammo = ammoPerClip;
+        ammoText.text = $"{Ammo}";
+>>>>>>> Stashed changes
     }
 }

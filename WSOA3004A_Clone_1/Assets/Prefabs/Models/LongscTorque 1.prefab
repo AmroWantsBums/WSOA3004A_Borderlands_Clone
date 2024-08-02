@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawStats:
   - stat: 1
-    minStatValue: 4
-    maxStatValue: 5
+    minStatValue: 0
+    maxStatValue: 0.3
   rarityLevel: 4
   selectWPN: 0
   selectMF: 4
