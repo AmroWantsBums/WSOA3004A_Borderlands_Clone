@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4580091169542065384}
   m_Layer: 0
   m_Name: ShmagJakobs
-  m_TagString: Untagged
+  m_TagString: AmmoControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

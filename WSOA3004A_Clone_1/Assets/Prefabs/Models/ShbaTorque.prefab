@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: -631840082536939635}
   m_Layer: 0
   m_Name: ShbaTorque
-  m_TagString: Untagged
+  m_TagString: DamageControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8814279681246918204}
   m_Layer: 0
   m_Name: ShscTediore 1
-  m_TagString: Untagged
+  m_TagString: AccuracyControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

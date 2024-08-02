@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5083575741907175252}
   m_Layer: 0
   m_Name: LongmagTorque 1
-  m_TagString: Untagged
+  m_TagString: AmmoControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
