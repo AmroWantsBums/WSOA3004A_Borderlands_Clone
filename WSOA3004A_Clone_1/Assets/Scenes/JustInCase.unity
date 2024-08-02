@@ -1765,6 +1765,7 @@ MonoBehaviour:
   shootDirection: {x: 0, y: 0}
   bulletSpeed: 5.08
   Ammo: 0
+  weaponPart: {fileID: 0}
   weaponDamage: 0
   fireRate: 0
   bulletType: {fileID: 0}
@@ -1775,6 +1776,7 @@ MonoBehaviour:
   WeaponSlots:
   - {fileID: 1066888949}
   - {fileID: 1219427713}
+  children: []
 --- !u!114 &1137811175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,7 +2957,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129716529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f2cda965c6c7a843bde8ee7a5453a0c, type: 3}
   m_Name: 
