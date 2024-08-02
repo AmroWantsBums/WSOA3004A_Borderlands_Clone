@@ -246,13 +246,6 @@ public class weaponController : MonoBehaviour
 
             }
         }
-    }
-
-<<<<<<< Updated upstream
-    void FetchWeaponStats(int Damage, int reloadSpeed, int Ammo, float fireRate, float Accuracy)
-    {
-        
-=======
         // Initialize default values
         weaponDamage = 30;
         fireRate = 0.4f;
@@ -292,6 +285,5 @@ public class weaponController : MonoBehaviour
         }
         Ammo = ammoPerClip;
         ammoText.text = $"{Ammo}";
->>>>>>> Stashed changes
     }
 }
