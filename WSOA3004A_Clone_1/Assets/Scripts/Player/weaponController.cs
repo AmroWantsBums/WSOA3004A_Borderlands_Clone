@@ -192,6 +192,8 @@ public class weaponController : WeaponPart
                 Vector3 spawnPosition = new Vector3(Player.transform.position.x, Player.transform.position.y, -1f);
                 Weapon = Instantiate(childrenP[i].gameObject, spawnPosition, Quaternion.identity, Player.transform);
                 Weapon.transform.localScale = new Vector2(1f, 0.2f);
+                Destroy(gameObject.transform.GetChild(1).gameObject);
+                Destroy(gameObject.transform.GetChild(2).gameObject);
             }
             else
             {

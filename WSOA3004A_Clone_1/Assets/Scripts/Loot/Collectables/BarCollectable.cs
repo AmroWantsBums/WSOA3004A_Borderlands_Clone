@@ -17,7 +17,7 @@ public class BarCollectable : MonoBehaviour
             CurrencyController currencyController = collision.GetComponent<CurrencyController>();
             currencyController.DisplayCollectableInfo(Description);
             CurrencyController CCScript = collision.GetComponent<CurrencyController>();
-            CCScript.GainCurrency(BarValue);
+            CCScript.GainedEridium(BarValue);
 
             Destroy(gameObject);
         }
