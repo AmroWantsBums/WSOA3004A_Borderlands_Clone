@@ -14,6 +14,11 @@ TagManager:
   - Incendiary_Weapon
   - Slag_Weapon
   - LootManager
+  - DamageControl
+  - FireRateControl
+  - AmmoControl
+  - AccuracyControl
+  - ReloadSpeedControl
   layers:
   - Default
   - TransparentFX

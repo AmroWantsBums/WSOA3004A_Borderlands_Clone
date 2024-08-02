@@ -172,6 +172,10 @@ GameObject:
   m_Layer: 0
   m_Name: GunbodypistolJakobs
   m_TagString: Slag_Weapon
+  - component: {fileID: -4673298267008464269}
+  m_Layer: 0
+  m_Name: GunbodypistolJakobs
+  m_TagString: Explosive_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +275,7 @@ MonoBehaviour:
   magazineSocket: {fileID: 1803733913482908454}
   stockSocket: {fileID: 8264973036979967208}
 --- !u!61 &5259913258818929948
+--- !u!61 &-4673298267008464269
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
