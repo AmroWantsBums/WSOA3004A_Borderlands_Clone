@@ -62,14 +62,13 @@ public class enemyHealth : MonoBehaviour
         else
         {
             healthPoints -= damageTaken;
-
-            if (healthPoints <= 0)
-            {
-                Die();
-            }
         }
 
-        
+        if (healthPoints <= 0)
+        {
+            Die();
+        }
+
     }
 
     public void ShowResistanceTxt()

@@ -36,12 +36,16 @@ public class bulletController : MonoBehaviour
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-            else
+            else if (col.gameObject.CompareTag("Incendiary_Enemy") || col.gameObject.CompareTag("Slag_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            else
+            {
+
             }
         }
 
@@ -56,13 +60,17 @@ public class bulletController : MonoBehaviour
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 enemyHealth.enemyVulnerable = true;
             }
-            else
+            else if (col.gameObject.CompareTag("Incendiary_Enemy") || col.gameObject.CompareTag("Explosive_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
                 enemyHealth.enemyVulnerable = true;
+            }
+            else
+            {
+
             }
         }
 
@@ -76,12 +84,16 @@ public class bulletController : MonoBehaviour
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
             }
-            else
+            else if (col.gameObject.CompareTag("Slag_Enemy") || col.gameObject.CompareTag("Explosive_Enemy"))
             {
                 var enemyHealth = col.gameObject.GetComponent<enemyHealth>();
                 enemyHealth.takeDamage(weaponController.weaponDamage);
                 Destroy(gameObject);
                 Instantiate(sparkParticleEffect, gameObject.transform.position, Quaternion.identity);
+            }
+            else
+            {
+
             }
         }
     }
