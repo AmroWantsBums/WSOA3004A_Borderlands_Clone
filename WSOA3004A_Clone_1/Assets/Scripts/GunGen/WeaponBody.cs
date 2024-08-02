@@ -13,22 +13,10 @@ public class WeaponBody : WeaponPart
     public int WepaonDamage;
 
 
-    public Text GunName;
-    public Text GunRarity;
-    public Text Reload;
-    public Text Magazine;
-    public Text Accuracy;
-    public Text FireRate;
-
-    public Text Damage;
-
-    public Text Type;
+    
 
 
-    private SpawnLoot.EnemyType.RarityPool.AvailableRarities raritygun;
-    private SpawnLoot.EnemyType.WeaponTypePool.WeaponType wtypegun;
-    private SpawnLoot.EnemyType.ManufactoresPool.AllManufacterus manugun;
-
+    
 
      
     protected List<WeaponPart> weaponParts = new List<WeaponPart>();
@@ -47,7 +35,7 @@ public class WeaponBody : WeaponPart
 
         CalculateStats();
         DetermineRarity();
-        UpdateText();
+       
      }
 
     void CalculateStats()
@@ -78,17 +66,7 @@ public class WeaponBody : WeaponPart
     }
 
 
-    void UpdateText(){
-        GunName.text = wtypegun;
-        GunRarity.text = raritygun;
-        Reload.text = weaponStats.ReloadSpeed;
-        Magazine.text = weaponStats.AmmoPerClip;
-        Accuracy.text = weaponStats.Accuracy;
-        FireRate.text = weaponStats.FireRate;
-        Damage.text = weaponStats.Damage;
-        
-
-    }
+   
     
 
     public List<WeaponPart> GetWeaponParts()
