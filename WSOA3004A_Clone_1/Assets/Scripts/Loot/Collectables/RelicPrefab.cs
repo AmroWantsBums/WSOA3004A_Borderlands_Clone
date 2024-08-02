@@ -9,7 +9,9 @@ public class RelicPrefab : MonoBehaviour
     private float AdjustValueCommon = 100, AdjustValueUncommon = 10;
     [SerializeField]
     private SpawnLoot spawnLootScript;
-
+    [SerializeField]
+    [TextArea]
+    private string Description;
     private void Start()
     {
         spawnLootScript = GameObject.FindGameObjectWithTag("LootManager").GetComponent<SpawnLoot>();
@@ -19,6 +21,9 @@ public class RelicPrefab : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            CurrencyController currencyController = collision.GetComponent<CurrencyController>();
+            currencyController.DisplayCollectableInfo(Description);
+
             for (int i = 0; i < spawnLootScript.regularEnemy.rarityPools.Count; i++)
             {
                 if (spawnLootScript.regularEnemy.rarityPools[i].selectRarities == SpawnLoot.EnemyType.RarityPool.AvailableRarities.Common &&
