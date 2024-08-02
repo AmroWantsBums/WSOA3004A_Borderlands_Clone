@@ -16,8 +16,7 @@ public class CurrencyController : MonoBehaviour
     [SerializeField]
     private GameObject FancyCanvas;
 
-    [SerializeField]
-    private int CurrentMoney = 0, CurrentEridium = 0;
+    public int CurrentMoney = 0, CurrentEridium = 0;
 
     [SerializeField]
     private float SetTimer = 2, CdTimer;
@@ -70,4 +69,6 @@ public class CurrencyController : MonoBehaviour
         Countdown = true;
         CdTimer = SetTimer;
     }
+
+    
 }
