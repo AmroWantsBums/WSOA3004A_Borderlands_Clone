@@ -13,6 +13,7 @@ public class weaponController : MonoBehaviour
     private bool canFire = true;
     public int Ammo;
     private TextMeshProUGUI ammoText;
+    public WeaponPart weaponPart;
     public int weaponDamage;
     public float fireRate;
     public GameObject bulletType;
@@ -21,13 +22,12 @@ public class weaponController : MonoBehaviour
     public float reloadSpeed;
     public int activeWeaponSlot = 1;
     public GameObject[] WeaponSlots;
+    public Transform[] children;
     
     // Start is called before the first frame update
     void Start()
     {
-        weaponDamage = 30;
         Player = GameObject.Find("Player");
-        Ammo = 20;
         Weapon = GameObject.Find("Gun");
         //Cursor.visible = false;
         ammoText = GameObject.Find("AmmoTxt").GetComponent<TextMeshProUGUI>();
@@ -98,10 +98,49 @@ public class weaponController : MonoBehaviour
         }
         if (Input.GetMouseButton(0) && canFire)
         {
-            var weaponPart = Weapon.GetComponent<WeaponPart>();
-
-            if (weaponPart != null)
+            if (Input.GetMouseButton(0) && canFire)
             {
+                children = Weapon.GetComponentsInChildren<Transform>();
+
+                // Initialize default values
+                weaponDamage = 30;
+                fireRate = 0.4f;
+                ammoPerClip = 1;
+                accuracy = 0.2f;
+                reloadSpeed = 0.2f;
+
+                // Retrieve weapon stats
+                foreach (Transform child in children)
+                {
+                    WeaponPart part = child.GetComponent<WeaponPart>();
+
+                    if (part != null)
+                    {
+                        // Update stats based on tag
+                        if (child.CompareTag("DamageControl"))
+                        {
+                            weaponDamage = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Damage, weaponDamage));
+                        }
+                        else if (child.CompareTag("FireRateControl"))
+                        {
+                            fireRate = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.FireRate, fireRate);
+                        }
+                        else if (child.CompareTag("AmmoControl"))
+                        {
+                            ammoPerClip = Mathf.RoundToInt(part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.AmmoPerClip, ammoPerClip));
+                        }
+                        else if (child.CompareTag("AccuracyControl"))
+                        {
+                            accuracy = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Accuracy, accuracy);
+                        }
+                        else if (child.CompareTag("ReloadSpeedControl"))
+                        {
+                            reloadSpeed = part.stats.GetValueOrDefault(WeaponPart.WeaponStatType.ReloadSpeed, reloadSpeed);
+                        }
+                    }
+                }
+
+                // Determine bulletType based on weapon tag
                 if (Weapon.CompareTag("Explosive_Weapon"))
                 {
                     bulletType = Bullets[0];
@@ -115,52 +154,49 @@ public class weaponController : MonoBehaviour
                     bulletType = Bullets[2];
                 }
 
-                // Retrieve weapon stats
-                weaponDamage = Mathf.RoundToInt(weaponPart.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Damage, 30)); // Default value
-                fireRate = weaponPart.stats.GetValueOrDefault(WeaponPart.WeaponStatType.FireRate, 0.4f);
-                ammoPerClip = Mathf.RoundToInt(weaponPart.stats.GetValueOrDefault(WeaponPart.WeaponStatType.AmmoPerClip, 1));
-                accuracy = weaponPart.stats.GetValueOrDefault(WeaponPart.WeaponStatType.Accuracy, 0.2f);
-                reloadSpeed = weaponPart.stats.GetValueOrDefault(WeaponPart.WeaponStatType.ReloadSpeed, 0.2f);
                 // Call Fire method with updated parameters
-                StartCoroutine(Fire(fireRate, 1, bulletType, accuracy, ammoPerClip, reloadSpeed));
-                canFire = false;
+                if (bulletType != null)
+                {
+                    StartCoroutine(Fire(fireRate, 1, bulletType, accuracy, ammoPerClip, reloadSpeed));
+                    canFire = false;
+                }
+
+                ammoText.text = $"{Ammo}";
             }
         }
 
-        ammoText.text = $"{Ammo}";
-    }
 
-    IEnumerator Fire(float fireRate, int numberOfBullets, GameObject bulletType, float accuracy, int AmmoPerClip, float ReloadSpeed)
-    {
-        if (numberOfBullets <= Ammo)
+        IEnumerator Fire(float fireRate, int numberOfBullets, GameObject bulletType, float accuracy, int AmmoPerClip, float ReloadSpeed)
         {
-            for (int i = 0; i < numberOfBullets; i++)
+            if (numberOfBullets <= Ammo)
             {
-                var weaponBodyScript = Weapon.GetComponent<WeaponBody>();
-                Vector2 spawnPoint = new Vector2(weaponBodyScript.barrelSocket.transform.position.x, weaponBodyScript.barrelSocket.transform.position.y);
-                GameObject spawnedBullet = Instantiate(bulletType, spawnPoint, Quaternion.identity);
-                Rigidbody2D bulletRb = spawnedBullet.GetComponent<Rigidbody2D>();
-                Vector2 bulletOffset = new Vector2(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy));
-                shootDirection = (shootDirection + bulletOffset).normalized;
-                bulletRb.AddForce(shootDirection * bulletSpeed, ForceMode2D.Impulse);
-                Ammo = Ammo - numberOfBullets;
+                for (int i = 0; i < numberOfBullets; i++)
+                {
+                    var weaponBodyScript = Weapon.GetComponent<WeaponBody>();
+                    Vector2 spawnPoint = new Vector2(weaponBodyScript.barrelSocket.transform.position.x, weaponBodyScript.barrelSocket.transform.position.y);
+                    GameObject spawnedBullet = Instantiate(bulletType, spawnPoint, Quaternion.identity);
+                    Rigidbody2D bulletRb = spawnedBullet.GetComponent<Rigidbody2D>();
+                    Vector2 bulletOffset = new Vector2(Random.Range(-accuracy, accuracy), Random.Range(-accuracy, accuracy));
+                    shootDirection = (shootDirection + bulletOffset).normalized;
+                    bulletRb.AddForce(shootDirection * bulletSpeed, ForceMode2D.Impulse);
+                    Ammo = Ammo - numberOfBullets;
+                }
+                yield return new WaitForSeconds(fireRate);
+                canFire = true;
             }
-            yield return new WaitForSeconds(fireRate);
+            else
+            {
+                StartCoroutine(reloadWeapon(ReloadSpeed, AmmoPerClip));
+            }
+        }
+
+        IEnumerator reloadWeapon(float reloadSeconds, int numberOfBulletsInMag)
+        {
+            yield return new WaitForSeconds(reloadSeconds);
+            Ammo = numberOfBulletsInMag;
             canFire = true;
         }
-        else
-        {
-            StartCoroutine(reloadWeapon(2f));
-        }        
     }
-
-    IEnumerator reloadWeapon(float reloadSeconds)
-    {
-        yield return new WaitForSeconds(reloadSeconds);
-        Ammo = 20;
-        canFire = true;
-    }
-
     public void pickupWeapon(GameObject pickedUpWeapon, int weaponSlot)
     {
         Transform[] children = WeaponSlots[(weaponSlot - 1)].GetComponentsInChildren<Transform>();
