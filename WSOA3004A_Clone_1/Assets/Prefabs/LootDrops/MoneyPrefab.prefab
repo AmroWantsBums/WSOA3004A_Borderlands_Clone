@@ -159,7 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyWorth: 5
-  Description: +5 Money
+  Description: '+5 Credits
+
+'
 --- !u!61 &-351515923050567610
 BoxCollider2D:
   m_ObjectHideFlags: 0

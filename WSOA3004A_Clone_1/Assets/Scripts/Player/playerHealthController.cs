@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class playerHealthController : MonoBehaviour
@@ -19,6 +20,10 @@ public class playerHealthController : MonoBehaviour
     void Update()
     {
         updateHealthBar();
+        if (playerHealthPoints <= 0)
+        {
+            SceneManager.LoadScene("DeathScene");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
