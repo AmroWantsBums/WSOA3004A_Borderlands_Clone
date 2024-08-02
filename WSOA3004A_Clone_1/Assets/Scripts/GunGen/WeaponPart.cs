@@ -53,6 +53,7 @@ public class WeaponPart : MonoBehaviour
 
     private void Awake()
     {
+
         foreach (WeaponStatPair statPair in rawStats)
         {
             float chosenValue = Random.Range(statPair.minStatValue, statPair.maxStatValue);
@@ -65,5 +66,8 @@ public class WeaponPart : MonoBehaviour
 
 
     // Start is called before the first frame update
-    
+    void Start()
+    {
+        
+    }
 }

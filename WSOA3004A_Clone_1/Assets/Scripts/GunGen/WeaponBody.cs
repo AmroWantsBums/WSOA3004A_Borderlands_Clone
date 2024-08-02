@@ -10,6 +10,7 @@ public class WeaponBody : WeaponPart
     public Transform handleSocket;
     public Transform magazineSocket;
     public Transform stockSocket;
+    public int WepaonDamage;
 
 
      
