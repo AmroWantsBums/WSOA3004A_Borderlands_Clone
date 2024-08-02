@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 197271128127961196}
   - component: {fileID: -696553062903721342}
   - component: {fileID: 6869957531429297978}
+  - component: {fileID: -56954215790983215}
   m_Layer: 0
   m_Name: GunbodyshotgunTediore 2
   m_TagString: Incendiary_Weapon
@@ -221,6 +222,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-56954215790983215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303909578280692535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1934783965096248721
 GameObject:
   m_ObjectHideFlags: 0
