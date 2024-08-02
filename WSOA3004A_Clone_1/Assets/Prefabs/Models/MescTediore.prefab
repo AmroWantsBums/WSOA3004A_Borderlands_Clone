@@ -117,7 +117,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3740475416659058098}
   - component: {fileID: -3256121045899344582}
-  - component: {fileID: 5239134212406375291}
   m_Layer: 0
   m_Name: MescTediore
   m_TagString: AccuracyControl
@@ -160,21 +159,3 @@ MonoBehaviour:
   rarityLevel: 2
   selectWPN: 0
   selectMF: 1
---- !u!114 &5239134212406375291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3918543244011236691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []

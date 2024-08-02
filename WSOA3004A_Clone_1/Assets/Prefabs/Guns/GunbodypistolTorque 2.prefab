@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 4632797515432966945}
   - component: {fileID: 6725374713678802602}
   - component: {fileID: -244337235874042670}
-  - component: {fileID: 2204274090665580384}
   m_Layer: 0
   m_Name: GunbodypistolTorque 2
   m_TagString: Explosive_Weapon
@@ -224,7 +223,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61e30d315a51c0c45baa3f5eeab10fc2, type: 2}
+  - {fileID: 2100000, guid: 0346388d035f10144b8f96df7c6e1519, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -270,6 +269,7 @@ MonoBehaviour:
   handleSocket: {fileID: 2634393949356409330}
   magazineSocket: {fileID: 1803733913482908454}
   stockSocket: {fileID: 8264973036979967208}
+  WepaonDamage: 0
 --- !u!61 &-244337235874042670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,21 +315,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2204274090665580384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8713152008952312245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []

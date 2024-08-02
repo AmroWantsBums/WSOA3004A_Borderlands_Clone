@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a463814d1a63394096630f0f30f8da9, type: 2}
+  - {fileID: 2100000, guid: aea95df22f3ee4341b276ce715f4ff5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5325080301909127066}
   - component: {fileID: 4216775049270952594}
-  - component: {fileID: -8202964012257697816}
   m_Layer: 0
   m_Name: LongmagJakobs
   m_TagString: AmmoControl
@@ -158,21 +157,3 @@ MonoBehaviour:
   rarityLevel: 3
   selectWPN: 0
   selectMF: 6
---- !u!114 &-8202964012257697816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7496803682987302713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9193430133784178772}
   - component: {fileID: 6745774976928079937}
-  - component: {fileID: -6009324624204550670}
   m_Layer: 0
   m_Name: ShhaTediore 1
   m_TagString: FireRateControl
@@ -53,24 +52,6 @@ MonoBehaviour:
   rarityLevel: 0
   selectWPN: 0
   selectMF: 1
---- !u!114 &-6009324624204550670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4816725842514327426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &4975665191142840869
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +114,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0346388d035f10144b8f96df7c6e1519, type: 2}
+  - {fileID: 2100000, guid: 6a463814d1a63394096630f0f30f8da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

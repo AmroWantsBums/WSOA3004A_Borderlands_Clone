@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 4632797515432966945}
   - component: {fileID: 6725374713678802602}
   - component: {fileID: -6874420429923971911}
-  - component: {fileID: 5299392027926082630}
   m_Layer: 0
   m_Name: GunbodypistolTorque 1
   m_TagString: Explosive_Weapon
@@ -270,6 +269,7 @@ MonoBehaviour:
   handleSocket: {fileID: 2634393949356409330}
   magazineSocket: {fileID: 1803733913482908454}
   stockSocket: {fileID: 8264973036979967208}
+  WepaonDamage: 0
 --- !u!61 &-6874420429923971911
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,21 +315,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5299392027926082630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8713152008952312245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
