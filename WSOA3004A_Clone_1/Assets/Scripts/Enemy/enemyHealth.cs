@@ -62,12 +62,15 @@ public class enemyHealth : MonoBehaviour
         else
         {
             healthPoints -= damageTaken;
+
+            
         }
 
         if (healthPoints <= 0)
         {
             Die();
         }
+
 
     }
 
