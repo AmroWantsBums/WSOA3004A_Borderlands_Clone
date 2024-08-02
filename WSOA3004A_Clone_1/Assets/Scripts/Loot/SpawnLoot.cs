@@ -6,11 +6,17 @@ using UnityEngine;
 public class SpawnLoot : MonoBehaviour
 {
     [SerializeField]
+    private GameObject OriginPos;
+    [SerializeField]
+    private int PurpleCost = 50, GoldCost=30; 
+    [SerializeField]
     private playerHealthController playerHealth;
     [SerializeField]
     private weaponController weaponControllerScript;
     [SerializeField]
     private WeaponGenerator weaponGenerator;
+    [SerializeField]
+    private CurrencyController currencyCont;
     
    [Header("Enemy Possible Loot Drops")]
     public EnemyType regularEnemy, badAssEnemy, chubbyEnemy;
@@ -641,7 +647,35 @@ public class SpawnLoot : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-       
+       if (Input.GetKeyDown(KeyCode.Q))
+        {
+            float Money = currencyCont.CurrentEridium;
+
+            float leftOver = Money - GoldCost;
+            if (leftOver >= 0)
+            {
+                currencyCont.CurrentEridium -= GoldCost;
+                currencyCont.GainedEridium(0);
+                GenerateGold();
+            }
+            
+            
+            
+        }
+
+       if (Input.GetKeyDown(KeyCode.E))
+        {
+            float Money = currencyCont.CurrentMoney;
+
+            float leftOver = Money - PurpleCost;
+            if (leftOver >= 0)
+            {
+                currencyCont.CurrentMoney -= PurpleCost;
+                currencyCont.GainCurrency(0);
+                GeneratePurple();
+            }
+            
+        }
     }
 
     public void DetermineEnemy(GameObject enemyDied)
@@ -1238,5 +1272,21 @@ public class SpawnLoot : MonoBehaviour
         //force = (float)UnityEngine.Random.Range(-minF, maxF);
         //Lootrb = Gun.GetComponent<Rigidbody2D>();
         //Lootrb.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+
+    private void GeneratePurple()
+    {
+        EnemyType PurpleDrop = regularEnemy;
+        PurpleDrop.produceRarity = EnemyType.RarityPool.AvailableRarities.VeryRare;
+
+        DetermineWeaponType(PurpleDrop, OriginPos);
+    }
+
+    private void GenerateGold()
+    {
+        EnemyType LegendaryDrop = regularEnemy;
+        LegendaryDrop.produceRarity = EnemyType.RarityPool.AvailableRarities.Legendary;
+        DetermineWeaponType(LegendaryDrop, OriginPos);
     }
 }
