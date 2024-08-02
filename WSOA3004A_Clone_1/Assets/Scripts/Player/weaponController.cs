@@ -23,7 +23,8 @@ public class weaponController : WeaponPart
     public int activeWeaponSlot = 1;
     public GameObject[] WeaponSlots;
     public Transform[] children;
-    
+    public Transform[] playerChildren;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -153,6 +154,7 @@ public class weaponController : WeaponPart
             yield return new WaitForSeconds(reloadSeconds);
             Ammo = numberOfBulletsInMag;
             canFire = true;
+            ammoText.text = $"{Ammo}";
         }
     }
     public void pickupWeapon(GameObject pickedUpWeapon, int weaponSlot)
@@ -173,7 +175,7 @@ public class weaponController : WeaponPart
         GameObject WeaponIcon = Instantiate(weaponObject, WeaponSlots[(weaponSlot - 1)].transform.position, Quaternion.identity, WeaponSlots[(weaponSlot - 1)].transform);
         WeaponIcon.transform.localScale = new Vector2(67.13f, 15.09f);
 
-        Transform[] playerChildren = Player.GetComponentsInChildren<Transform>();
+        playerChildren = Player.GetComponentsInChildren<Transform>();
         for (int j = 0; j < playerChildren.Length; j++)
         {
             if (playerChildren[j].gameObject.name != "Player" && playerChildren[j].gameObject.name != "TriggerCollider")
@@ -235,5 +237,7 @@ public class weaponController : WeaponPart
                 }
             }
         }
+        Ammo = ammoPerClip;
+        ammoText.text = $"{Ammo}";
     }
 }
